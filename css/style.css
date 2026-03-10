@@ -1,78 +1,247 @@
-/*구글 폰트*/
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Nanum+Myeongjo&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/earlyaccess/jejugothic.css');
+/* --- 폰트 및 초기화 유지 --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 @font-face {
   font-family: 'JEJU';
-  src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2') format('woff2');
+  src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2')
+    format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
-
-
-/*초기화*/
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 ul,
 li {
   list-style: none;
 }
-
 a {
   text-decoration: none;
   color: inherit;
 }
-
 button {
   font-family: inherit;
   background-color: transparent;
   border: none;
   outline: none;
   color: inherit;
+  cursor: pointer;
 }
-
 body {
-  font-family: "Noto Sans", "Nanum Myeongjo", serif;
+  font-family: 'Noto Sans', 'JEJU', serif;
 }
 
-/*header*/
-
+/* --- Header --- */
 header {
- width: 100%;
+  width: 100%;
   min-width: 1280px;
   height: 800px;
-  margin: auto;
-  display: flex;
   position: relative;
-  align-items: center;
-  flex-direction: column;
-  padding: 50px;
-  justify-content: flex-start; 
+  overflow: hidden;
 }
 
-header .slider {
+.header-ui-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  transition: background 0.4s ease;
+}
+
+.header-ui-wrap:hover {
+  background: rgba(244, 239, 232, 0.98);
+  opacity: 90%;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.header-ui-wrap:hover .nav li a,
+.header-ui-wrap:hover .gnb > li > a {
+  color: #7a6a5e;
+}
+.header-ui-wrap:hover .logo h1 {
+  color: #9c7a4a;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+.logo-box {
+  position: relative;
+  width: 160px;
+  height: 80px;
+  margin-top: -5px;
+}
+
+.logo-default,
+.logo-hover {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  z-index: 1;
+  object-fit: contain;
+  transition: opacity 0.3s;
 }
 
+.logo-hover {
+  opacity: 0;
+}
+
+.header-ui-wrap:hover .logo-default {
+  opacity: 0;
+}
+
+.header-ui-wrap:hover .logo-hover {
+  opacity: 1;
+}
+
+header .nav {
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  display: flex;
+  gap: 30px;
+  color: #f4efe8;
+  font-size: 18px;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  margin: 50px;
+  gap: 0px;
+  color: #f4efe8;
+}
+
+header .logo h1 {
+  font-family: 'Alegreya';
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: center;
+}
+
+header .menu-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+header .gnb {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+}
+
+header .gnb > li {
+  width: 140px;
+  text-align: left;
+  padding-bottom: 30px;
+}
+
+header .gnb > li > a {
+  color: #f4efe8;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* 서브메뉴*/
+.full-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.6s ease;
+
+  background: rgba(244, 239, 232, 0.98);
+  border-top: 1px solid rgba(58, 52, 46, 0.1);
+  z-index: 100;
+}
+
+.header-ui-wrap:hover .full-dropdown {
+  max-height: 800px;
+  opacity: 1;
+}
+
+.dropdown-inner {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding: 40px 0 80px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.sub-col {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.sub-col a {
+  color: #7a6a5e;
+  font-family: 'Noto Sans';
+  font-size: 14px;
+}
+
+.sub-col a:hover {
+  color: #d4580a !important;
+  font-weight: bold;
+}
+
+/* 메인이미지 슬라이더 */
+.slider {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 1s;
+}
+.slide.active {
+  opacity: 1;
+}
+
+.slide.active img {
+  transform: scale(1.1);
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 6s ease;
+}
 header .slider button {
   position: absolute;
-  top: 50%;
+  top: 70%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
   border: none;
   color: white;
+  opacity: 50%;
   font-size: 40px;
   width: 60px;
   height: 60px;
@@ -82,7 +251,7 @@ header .slider button {
 }
 
 header .slider button:hover {
-  background: rgba(0, 0, 0, 0.7);
+  opacity: 100%;
 }
 
 .prev {
@@ -93,278 +262,84 @@ header .slider button:hover {
   right: 20px;
 }
 
-header .slider .slides {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-header .slider .slide {
+.txt-wrap {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 1.8s ease-in-out;
-}
-
-header .slider .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-header .slide.active {
-  opacity: 1;
-  z-index: 1;
-}
-
-header .nav,
-header .logo,
-header .menu-area,
-header .txt-wrap {
-  position: relative;
-  z-index: 2;
-}
-
-header .nav {
-  position: absolute;
-  top: 20px;
-  right: 80px;
-  display: flex;
-  gap: 30px;
-  color: #F4EFE8;
-  font-size: 18px;
-  font-family: "Noto Sans";
-}
-
-
-header .logo {
-  color: #F4EFE8;
-  display: flex;
-  align-items: center;
-  margin: 50px;
-  gap: 30px;
-}
-
-header .logo img {
-  width: 115px;
-  height: auto;
-  color: #F4EFE8;
-}
-
-header .logo h1 {
-  font-family: "Alegreya";
-  font-size: 35px;
-  text-align: center;
-  color: #F4EFE8;
-}
-
-
-header .gnb {
-  display: flex;
-  justify-content: center;
-  gap: 80px;
-  width: 100%;
-  padding: 0px;
-  list-style: none;
-}
-
-header .gnb>li,
-.dropdown-inner>div {
-  width: 140px; 
-  flex-shrink: 0;
-  text-align: left;
-}
-
-header .gnb>li {
-  list-style: none;
-  position: relative;
-
-}
-
-header .gnb>li>a {
-  color: #F4EFE8;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-
-header .menu-area {
-  position: relative; 
-  width: 100%;        
-  display: flex;
-  justify-content: center;
-  z-index:10;
-
-}
-
-.full-dropdown {
-  position: absolute;
-  top: 100%; 
+  bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100vw;
-  padding-top: 20px;   
-  margin-top: 0px; 
-
-  z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.4s ease;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
-}
-
-/* 마우스가 박스 위에 있을 때도 유지되도록 */
-.menu-area:hover .full-dropdown {
-  max-height: 500px;
-  opacity: 1;
-}
-.dropdown-inner {
-  display: flex;
-  justify-content: center;
-  gap: 80px;
-  padding: 20px 0 20px 0;
   width: 100%;
   max-width: 1280px;
-  margin: 0 auto;
-}
-
-.dropdown-inner div {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.dropdown-inner a {
-  color: #7A6A5E;
-  font-size: 14px;
-  font-family: "Noto Sans";
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-header .gnb>li:hover>a {
-  color: #D4580A;
-  transition: color 0.3s ease;
-}
-
-header .gnb>li.active>a {
-  color: #D4580A;
-  transition: color 0.3s ease;
-}
-
-.dropdown-inner a:hover {
-  color: #D4580A;
-  font-weight: bold;
-}
-
-.menu-area:hover .full-dropdown {
-  max-height: 500px;
-}
-
-@media (max-width: 1200px) {
-
-  header .gnb,
-  .dropdown-inner {
-    gap: 40px;
-  }
-
-  header .gnb>li,
-  .dropdown-inner>div {
-    width: 110px;
-  }
-}
-
-
-header .txt-wrap {
-  position: relative;
-  z-index: 9;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding-top: 150px;
-}
-
-header .txt-wrap .txt {
-  padding-left: 75px;
-  color: #F4EFE8;
-  text-align: left;
+  z-index: 10;
+  color: #f4efe8;
 }
 
 header .txt h1 {
-  font-family: "Alegreya";
+  font-family: 'Alegreya';
   font-size: 70px;
-  color: #F4EFE8;
-  /* 원래 색상 */
+  font-weight: 550;
+  color: #f4efe8;
   opacity: 0.85;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   margin-bottom: 25px;
 }
 
 header .txt p {
-  font-family: "Alegreya";
+  font-family: 'Alegreya';
   font-size: 15px;
-  color: #F4EFE8;
+  color: #f4efe8;
   line-height: 1.6;
   opacity: 0.7;
 }
 
-
-/*Owol School부분*/
-
+/* --- Notice-bar  --- */
 #introduce {
   width: 100%;
   min-width: 1280px;
-  padding: 150px 0px;
+  padding: 150px 0;
   position: relative;
-  background-color: #F4EFE8;
+  background-color: #f4efe8;
 }
 
-#introduce .notice-bar {
+.notice-bar {
   position: absolute;
-  top: 0px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 67px;
+  background-color: #2e2a26;
   display: flex;
   align-items: center;
-  width: 100%;
-  min-width: 1280px;
-  height: 67px;
-  background-color: #2E2A26;
   padding-left: 170px;
+  z-index: 5;
 }
 
 #introduce .notice-bar a {
   font-size: 18px;
   letter-spacing: 1px;
-  color: #F4EFE8;
-  font-family: "Noto Sans";
+  color: #f4efe8;
+  font-family: 'Noto Sans';
 }
+
+/* inner layout */
 
 #introduce .inner {
   width: 100%;
   min-width: 1280px;
-  margin: 0 auto;
+  margin: 80px auto;
   text-align: center;
 }
 
 #introduce .inner h1 {
-  font-family: "Alegreya";
-  font-size: 50px;
-  color: #3A342E;
+  font-family: 'Alegreya';
+  font-size: 40px;
+  font-weight: 500;
+  color: #3a342e;
 }
 
 #introduce .inner p {
-  font-family: "Alegreya";
-  font-size: 35px;
-  color: #7A6A5E;
+  font-family: 'Alegreya';
+  font-size: 25px;
+  color: #7a6a5e;
   margin-bottom: 60px;
 }
 
@@ -373,33 +348,59 @@ header .txt p {
   align-items: center;
   justify-content: center;
   gap: 70px;
-  position: relative;
   width: 100%;
+  position: relative;
 }
 
-#introduce .img img {
+#introduce .img-box {
+  position: relative;
   width: 700px;
-  height: auto;
+  overflow: hidden;
+}
+
+#introduce .img-box img {
+  width: 100%;
+  display: block;
+}
+#introduce .img-default,
+#introduce .img-hover {
+  transition: all 0.6s ease;
+}
+/* hover image */
+
+#introduce .img-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+#introduce .img-box:hover .img-default {
+  opacity: 0;
+  transform: scale(1.08);
+}
+
+#introduce .img-box:hover .img-hover {
+  opacity: 1;
+  transform: scale(1.08);
 }
 
 #introduce .img .txt {
   text-align: left;
   position: static;
-
 }
 
 #introduce .img h2 {
   font-family: 'JEJU', serif;
   font-weight: 200;
   line-height: 1.5;
-  font-size: 35px;
-  color: #3A342E;
+  font-size: 30px;
+  color: #3a342e;
   text-decoration: underline;
-  text-decoration-color: #7A6A5E;
+  text-decoration-color: #7a6a5e;
   text-underline-offset: 12px;
   margin-top: 70px;
   margin-bottom: 25px;
-
 }
 
 #introduce .img p {
@@ -407,22 +408,21 @@ header .txt p {
   color: rgba(163, 149, 124, 1);
   line-height: 2;
 }
-
 /*Special Program*/
 
 #content {
   width: 100%;
   min-width: 1280px;
-  background-color: #7A6A5E;
+  background-color: #7a6a5e;
   padding: 100px 0px;
   text-align: center;
 }
 
 #content .inner h1 {
-  font-family: "Alegreya";
+  font-family: 'Alegreya';
   font-size: 40px;
   font-weight: 500;
-  color: #F4EFE8;
+  color: #f4efe8;
   margin-bottom: 75px;
 }
 
@@ -439,15 +439,19 @@ header .txt p {
 #content .inner .wrap .card {
   width: 320px;
   min-height: 458px;
-  border: 1px solid #F4EFE8;
+  border: 1px solid #f4efe8;
   background-color: rgba(255, 255, 255, 0.05);
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 15px;
   box-sizing: border-box;
+  transition: all 0.4s ease;
 }
-
+#content .inner .wrap .card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
 
 #content .inner .wrap .card .offer {
   width: 100%;
@@ -465,22 +469,26 @@ header .txt p {
 }
 
 #content .inner .wrap .card h2 {
-  font-family: "Noto Sans";
-  font-size: 16px;
+  font-family: 'Noto Sans';
+  font-size: 15px;
+  letter-spacing: -0.5px;
   font-weight: bold;
-  color: #F4EFE8;
+  color: #f4efe8;
   margin-bottom: 15px;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #content .inner .wrap .card hr {
   border: 0;
   height: 1px;
-  background-color: #F4EFE8;
+  background-color: #f4efe8;
 }
 
 #content .inner .wrap .card p {
-  font-family: "Noto Sans";
+  font-family: 'Noto Sans';
   font-size: 14px;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
@@ -500,22 +508,21 @@ header .txt p {
 }
 
 #content .inner .wrap .card .button button {
-  color: #C9C3B8;
+  color: #c9c3b8;
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
   padding: 5px;
-  font-family: "Noto Sans";
+  font-family: 'Noto Sans';
   display: block;
   text-align: left;
 }
 
 #content .inner .wrap .card .button button:hover {
-  color: #F4EFE8;
+  color: #f4efe8;
   font-weight: bold;
-  background-color: #D4580A;
+  background-color: #d4580a;
 }
-
 
 /*travel정보 영역*/
 
@@ -525,82 +532,90 @@ header .txt p {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px 0;
-  background-color: #F4EFE8;
+  padding: 150px 50px;
+  background-color: #f4efe8;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: 1s;
 }
 
+#winter_travel.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 #winter_travel .inner {
   width: 1060px;
   height: 450px;
   display: flex;
   overflow: hidden;
-  border: 1px solid #9C7A4A;
+  border: 1px solid #9c7a4a;
 }
 
 #winter_travel .inner .txt {
   width: 385px;
-  font-family: 'Jeju Gothic', sans-serif;
+  font-family: 'Noto Sans';
   margin-top: 60px;
   margin-left: 55px;
 }
 
 #winter_travel .inner .txt h1 {
-  font-size: 30px;
-  font-weight: 100;
+  font-size: 35px;
+  font-weight: 500;
+  letter-spacing: 2px;
   line-height: 2;
-  color: #3A342E;
+  color: #3a342e;
 }
 
 #winter_travel .inner .txt h2 {
-  font-size: 20px;
-  font-weight: 100;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.5;
-  color: #3A342E;
-
+  color: #3a342e;
 }
 
 #winter_travel .inner .txt p {
   font-size: 16px;
-  font-weight: 50;
+  font-weight: 400;
   line-height: 1.5;
-  margin-top: 50px;
-  color: #6B6262;
+  margin-top: 30px;
+  color: #6b6262;
 }
 
-
 #winter_travel .inner .txt .button button {
-  color: #6B6262;
+  color: #6b6262;
   font-size: 16px;
   cursor: pointer;
   display: block;
   margin-top: 92px;
-  border: 1px solid #6B6262;
+  border: 1px solid #6b6262;
   padding: 15px;
 }
 
 #winter_travel .inner .txt .button button:hover {
-  background-color: #6B6262;
-  color: #F4EFE8;
+  background-color: #6b6262;
+  color: #f4efe8;
 }
 
 #winter_travel .inner .img {
   width: 675px;
-  background: url(../img/fishing.png) no-repeat center / cover;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(../img/fishing.png) no-repeat center / cover;
   position: relative;
   text-align: center;
 }
 
 #winter_travel .inner .img .title-wrap {
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
 }
 
 #winter_travel .inner .img .title-wrap h2 {
-  font-family: "Nanum Myeongjo";
-  font-weight: 200;
+  font-family: 'Alegreya';
+  font-weight: 300;
   font-size: 45px;
   letter-spacing: 15px;
   color: #f39233;
@@ -608,8 +623,8 @@ header .txt p {
 }
 
 #winter_travel .inner .img .title-wrap h1 {
-  font-family: "Nanum Myeongjo";
-  font-weight: 700;
+  font-family: 'Alegreya';
+  font-weight: 500;
   font-size: 75px;
   letter-spacing: 20px;
   color: #f39233;
@@ -619,9 +634,9 @@ header .txt p {
 
 #winter_travel .inner .img .info-text {
   position: absolute;
-  top: 37%;
+  top: 40%;
   left: 20px;
-  width: 230px;
+  width: 280px;
   text-align: left;
 }
 
@@ -643,8 +658,8 @@ header .txt p {
   bottom: 20px;
   text-align: right;
   color: #f39233;
-  font-family: "Noto Sans";
-  font-weight: 600;
+  font-family: 'Noto Sans';
+  font-weight: 400;
   font-size: 18px;
   letter-spacing: 2px;
 }
@@ -663,6 +678,11 @@ header .txt p {
   position: relative;
   flex: 1;
   overflow: hidden;
+  transition: transform 0.6s ease;
+}
+
+.room_img li:hover img {
+  transform: scale(1.2);
 }
 
 .room_img li::after {
@@ -677,7 +697,7 @@ header .txt p {
   opacity: 0;
 }
 
-.room_img li>img {
+.room_img li > img {
   width: 100%;
   height: auto;
   display: block;
@@ -687,7 +707,7 @@ header .txt p {
   position: absolute;
   top: 60px;
   left: 70px;
-  color: #F4EFE8;
+  color: #f4efe8;
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 5px;
@@ -707,9 +727,7 @@ header .txt p {
 
 .room_img li:hover a {
   opacity: 1;
-
 }
-
 
 /* footer */
 footer {
@@ -718,22 +736,20 @@ footer {
   height: 400px;
   background-color: rgba(63, 48, 38, 1);
   padding: 50px 80px;
-
 }
 
 footer .inner .upper {
   width: 100%;
   min-width: 1280px;
   height: 180px;
-  border-bottom: 1px solid #9C7A4A;
+  border-bottom: 1px solid #9c7a4a;
   padding-bottom: 20px;
   position: relative;
   align-items: center;
-
 }
 
 footer .inner .upper .logo {
-  color: #F4EFE8;
+  color: #f4efe8;
   position: absolute;
   display: flex;
   align-items: center;
@@ -748,7 +764,7 @@ footer .inner .upper .logo img {
 }
 
 footer .inner .upper .logo h1 {
-  font-family: "Alegreya";
+  font-family: 'Alegreya';
   font-size: 20px;
   font-weight: 200;
   opacity: 0.6;
@@ -765,9 +781,9 @@ footer .inner .upper ul {
 }
 
 footer .inner .upper ul li a {
-  color: #F4EFE8;
+  color: #f4efe8;
   font-size: 16px;
-  font-family: "Noto Sans";
+  font-family: 'Noto Sans';
   opacity: 0.6;
 }
 
@@ -781,12 +797,11 @@ footer .inner .lower {
 }
 
 footer .inner .lower p {
-  font-family: "Alegreya";
+  font-family: 'Alegreya';
   font-size: 14px;
-  color: #F4EFE8;
+  color: #f4efe8;
   opacity: 0.5;
   margin-bottom: 20px;
-
 }
 
 footer .inner .lower ul {
@@ -797,7 +812,6 @@ footer .inner .lower ul {
 }
 
 footer .inner .lower ul li i {
-  color: #F4EFE8;
+  color: #f4efe8;
   font-size: 25px;
-
 }

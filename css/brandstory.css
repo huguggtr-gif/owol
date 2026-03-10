@@ -1,0 +1,448 @@
+/* --- 폰트 및 초기화 유지 --- */
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+  font-family: 'JEJU';
+  src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  cursor: pointer;
+}
+body {
+  background-color: #f4efe8;
+  font-family: 'Noto Sans', 'JEJU', serif;
+}
+
+/* --- Header ---*/
+
+header {
+  width: 100%;
+  min-width: 1280px;
+  height: 320px;
+  position: relative;
+}
+
+.header-ui-wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  transition: background 0.4s ease;
+}
+
+.header-ui-wrap:hover {
+  background: rgba(244, 239, 232, 0.98);
+  border-bottom: 1px solid #c9c3b8;
+}
+.header-ui-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #c9c3b8;
+}
+
+.full-dropdown {
+  border-top: none;
+}
+
+.header-ui-wrap:hover .nav li a,
+.header-ui-wrap:hover .gnb > li > a {
+  color: #7a6a5e;
+}
+.header-ui-wrap:hover .logo h1 {
+  color: #9c7a4a;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+.logo-box {
+  position: relative;
+  width: 120px;
+  height: 60px;
+  margin-top: -5px;
+}
+
+.logo-default,
+.logo-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s;
+}
+
+.logo-hover {
+  opacity: 0;
+}
+
+.header-ui-wrap:hover .logo-default {
+  opacity: 0;
+}
+
+.header-ui-wrap:hover .logo-hover {
+  opacity: 1;
+}
+
+header .nav {
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  display: flex;
+  gap: 30px;
+  color: #9c7a4a;
+  font-size: 18px;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  margin: 40px 0 60px 0;
+  gap: 0px;
+  color: #9c7a4a;
+}
+
+header .logo h1 {
+  font-family: 'Alegreya';
+  font-size: 28px;
+  text-align: center;
+  font-weight: 450;
+  line-height: 1.1;
+}
+
+header .menu-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1.5px solid #c9c3b8;
+  padding-bottom: 20px;
+}
+.menu-area:hover .full-dropdown {
+  max-height: 800px;
+  opacity: 1;
+}
+
+header .gnb {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+}
+
+header .gnb > li {
+  width: 140px;
+  text-align: left;
+  padding-top: 30px;
+  padding-bottom: 5px;
+}
+
+header .gnb > li > a {
+  color: #2e2a26;
+  font-weight: 400;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+header .gnb > li > a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #9c7a4a;
+  transition: width 0.3s;
+  margin-top: 6px;
+}
+
+header .gnb > li:hover > a::after {
+  width: 100%;
+}
+
+/* 서브메뉴*/
+
+.full-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.6s ease;
+
+  background: rgba(244, 239, 232, 0.98);
+  border-top: 1.5px solid #c9c3b8;
+  z-index: 100;
+}
+
+.dropdown-inner {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding: 50px 0 80px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.sub-col {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.sub-col a {
+  color: #7a6a5e;
+  font-family: 'Noto Sans';
+  font-size: 14px;
+}
+
+.sub-col a:hover {
+  color: #d4580a !important;
+  font-weight: bold;
+}
+
+/* --- VIDEO --- */
+
+.video-wrap {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  height: 650px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+
+.video-wrap iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
+/* --- 소개텍스트 --- */
+
+#introduce {
+  width: 100%;
+  min-width: 1280px;
+  padding: 120px 0 40px 0;
+  position: relative;
+}
+
+#introduce .brandstory {
+  width: 100%;
+  min-width: 1280px;
+  margin: 120px auto 40px auto;
+  text-align: center;
+}
+
+#introduce .brandstory h1 {
+  font-family: 'Alegreya';
+  font-size: 50px;
+  color: #3a342e;
+  font-weight: 200;
+  padding-bottom: 50px;
+}
+
+#introduce .brandstory hr {
+  width: 40px;
+  border: 1px solid #a3957c;
+  margin: auto;
+}
+#introduce .brandstory h2 {
+  font-family: 'Alegreya';
+  font-size: 20px;
+  font-weight: 200;
+  color: #c9c3b8;
+  padding-top: 10px;
+}
+
+#introduce .brandstory p {
+  font-family: 'Noto Sans';
+  line-height: 1.5;
+  font-size: 18px;
+  color: #7a6a5e;
+  margin-bottom: 60px;
+  padding-top: 70px;
+}
+
+#introduce .img .txt {
+  text-align: center;
+  position: static;
+}
+
+/* 이미지슬라이더*/
+
+/* --- 슬라이더 전체 사이즈 축소 버전 --- */
+#story-slider {
+  width: 100%;
+  padding: 80px 0; /* 위아래 여백을 약간 줄임 */
+  background-color: #f4efe8;
+  overflow: hidden;
+}
+
+.mySwiper {
+  width: 100%;
+  height: 400px; /* 전체 높이를 600px -> 400px로 축소 */
+}
+
+.swiper-wrapper {
+  align-items: center;
+}
+
+.swiper-slide {
+  width: auto !important;
+  height: auto !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0.6; /* 주변 이미지는 더 흐리게 해서 시선을 분산시키지 않음 */
+  transform: scale(0.8); /* 기본 스케일을 더 작게 */
+}
+
+/* 가운데 강조 효과 */
+.swiper-slide-active {
+  opacity: 1 !important;
+  transform: scale(1.2) !important; /* 가운데만 살짝 커지게 */
+  z-index: 10;
+}
+
+.swiper-slide img {
+  display: block;
+  width: auto !important;
+  /* 핵심: 이미지의 최대 높이를 확 줄여서 전체적인 '작은 카드' 느낌을 줌 */
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* 그림자도 가볍게 수정 */
+}
+
+/* FOOTER */
+
+footer {
+  width: 100%;
+  min-width: 1280px;
+  height: 400px;
+  background-color: rgba(63, 48, 38, 1);
+  padding: 50px 80px;
+}
+
+footer .inner .upper {
+  width: 100%;
+  min-width: 1280px;
+  height: 180px;
+  border-bottom: 1px solid #9c7a4a;
+  padding-bottom: 20px;
+  position: relative;
+  align-items: center;
+}
+
+footer .inner .upper .logo {
+  color: #f4efe8;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  gap: 10px;
+}
+
+footer .inner .upper .logo img {
+  width: 71px;
+  height: auto;
+  opacity: 0.7;
+}
+
+footer .inner .upper .logo h1 {
+  font-family: 'Alegreya';
+  font-size: 20px;
+  font-weight: 200;
+  opacity: 0.6;
+  margin-top: 10px;
+  text-align: center;
+}
+
+footer .inner .upper ul {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 80px;
+  top: -20px;
+}
+
+footer .inner .upper ul li a {
+  color: #f4efe8;
+  font-size: 16px;
+  font-family: 'Noto Sans';
+  opacity: 0.6;
+}
+
+footer .inner .lower {
+  width: 100%;
+  min-width: 1280px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .inner .lower p {
+  font-family: 'Alegreya';
+  font-size: 14px;
+  color: #f4efe8;
+  opacity: 0.5;
+  margin-bottom: 20px;
+}
+
+footer .inner .lower ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  right: 20px;
+}
+
+footer .inner .lower ul li i {
+  color: #f4efe8;
+  font-size: 25px;
+}
