@@ -1,6 +1,7 @@
 /* --- 폰트 및 초기화 유지 --- */
 
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
 
 @font-face {
   font-family: 'JEJU';
@@ -129,7 +130,7 @@ header .logo {
 }
 
 header .logo h1 {
-  font-family: 'Alegreya';
+  font-family: 'Libre Caslon Text', serif;
   font-size: 35px;
   font-weight: 400;
   line-height: 1.1;
@@ -274,9 +275,9 @@ header .slider button:hover {
 }
 
 header .txt h1 {
-  font-family: 'Alegreya';
-  font-size: 70px;
-  font-weight: 550;
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 60px;
+  font-weight: 450;
   color: #f4efe8;
   opacity: 0.85;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -284,7 +285,7 @@ header .txt h1 {
 }
 
 header .txt p {
-  font-family: 'Alegreya';
+  font-family: 'Libre Caslon Text', serif;
   font-size: 15px;
   color: #f4efe8;
   line-height: 1.6;
@@ -306,7 +307,7 @@ header .txt p {
   left: 0;
   width: 100%;
   height: 67px;
-  background-color: #2e2a26;
+  background-color: #9fb4c7;
   display: flex;
   align-items: center;
   padding-left: 170px;
@@ -316,7 +317,8 @@ header .txt p {
 #introduce .notice-bar a {
   font-size: 18px;
   letter-spacing: 1px;
-  color: #f4efe8;
+  color: #fff;
+  font-weight: 500;
   font-family: 'Noto Sans';
 }
 
@@ -330,14 +332,14 @@ header .txt p {
 }
 
 #introduce .inner h1 {
-  font-family: 'Alegreya';
+  font-family: 'Noto Sans';
   font-size: 40px;
   font-weight: 500;
   color: #3a342e;
 }
 
 #introduce .inner p {
-  font-family: 'Alegreya';
+  font-family: 'Noto Sans';
   font-size: 25px;
   color: #7a6a5e;
   margin-bottom: 60px;
@@ -354,7 +356,7 @@ header .txt p {
 
 #introduce .img-box {
   position: relative;
-  width: 700px;
+  width: 720px;
   overflow: hidden;
 }
 
@@ -391,10 +393,10 @@ header .txt p {
 }
 
 #introduce .img h2 {
-  font-family: 'JEJU', serif;
-  font-weight: 200;
-  line-height: 1.5;
-  font-size: 30px;
+  font-family: 'Noto Sans';
+  font-weight: 300;
+  line-height: 1.8;
+  font-size: 27px;
   color: #3a342e;
   text-decoration: underline;
   text-decoration-color: #7a6a5e;
@@ -404,11 +406,26 @@ header .txt p {
 }
 
 #introduce .img p {
+  font-family: 'Noto Sans';
   font-size: 16px;
   color: rgba(163, 149, 124, 1);
   line-height: 2;
 }
+
 /*Special Program*/
+
+.slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px; /* 카드 3개 너비 + 간격 합계 */
+  margin: 0 auto;
+}
+.view-box {
+  width: 1010px; /* (카드너비 320 * 3) + (간격 25 * 2) */
+  overflow: hidden; /* 영역 밖 카드는 숨김 */
+}
 
 #content {
   width: 100%;
@@ -419,7 +436,7 @@ header .txt p {
 }
 
 #content .inner h1 {
-  font-family: 'Alegreya';
+  font-family: 'Noto Sans';
   font-size: 40px;
   font-weight: 500;
   color: #f4efe8;
@@ -427,17 +444,40 @@ header .txt p {
 }
 
 #content .inner .wrap {
-  width: 1200px;
-  height: 380px;
-  margin: auto;
+  width: max-content; /* 내부 콘텐츠 길이에 맞게 자동 확장 */
+  margin: 0; /* 기존 margin: auto 제거 */
   display: flex;
-  justify-content: center;
   gap: 25px;
-  margin-bottom: 115px;
+  transition: transform 0.5s ease-in-out; /* 이동 애니메이션 */
+}
+#content .inner .slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(244, 239, 232, 0.2);
+  color: #f4efe8;
+  width: 50px;
+  height: 50px;
+
+  font-size: 20px;
+  z-index: 10;
+  transition: 0.3s;
+}
+
+#content .inner .slide-btn:hover {
+  background: #d4580a;
+}
+
+#content .inner .prev-btn {
+  left: -70px;
+}
+#content .inner .next-btn {
+  right: -70px;
 }
 
 #content .inner .wrap .card {
   width: 320px;
+  flex-shrink: 0; /* 창이 좁아져도 카드가 줄어들지 않음 */
   min-height: 458px;
   border: 1px solid #f4efe8;
   background-color: rgba(255, 255, 255, 0.05);
@@ -592,7 +632,7 @@ header .txt p {
 }
 
 #winter_travel .inner .txt .button button:hover {
-  background-color: #6b6262;
+  background-color: #9fb4c7;
   color: #f4efe8;
 }
 
@@ -600,7 +640,7 @@ header .txt p {
   width: 675px;
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(../img/fishing.png) no-repeat center / cover;
+    url(../img/story1.jpg) no-repeat center / cover;
   position: relative;
   text-align: center;
 }
@@ -614,20 +654,20 @@ header .txt p {
 }
 
 #winter_travel .inner .img .title-wrap h2 {
-  font-family: 'Alegreya';
+  font-family: 'Libre Caslon Text', serif;
   font-weight: 300;
-  font-size: 45px;
+  font-size: 30px;
   letter-spacing: 15px;
-  color: #f39233;
+  color: #fff;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 #winter_travel .inner .img .title-wrap h1 {
-  font-family: 'Alegreya';
+  font-family: 'Libre Caslon Text', serif;
   font-weight: 500;
   font-size: 75px;
   letter-spacing: 20px;
-  color: #f39233;
+  color: #9fb4c7;
   opacity: 0.9;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
 }
@@ -657,7 +697,7 @@ header .txt p {
   right: 20px;
   bottom: 20px;
   text-align: right;
-  color: #f39233;
+  color: #9fb4c7;
   font-family: 'Noto Sans';
   font-weight: 400;
   font-size: 18px;
@@ -724,6 +764,10 @@ header .txt p {
   transition: opacity 0.4s ease;
   z-index: 2;
 }
+.room_img li a img {
+  width: 100px; /* 원하는 가로 크기 (기본값보다 작게 설정) */
+  height: auto; /* 비율에 맞춰 세로 자동 조절 */
+}
 
 .room_img li:hover a {
   opacity: 1;
@@ -734,7 +778,7 @@ footer {
   width: 100%;
   min-width: 1280px;
   height: 400px;
-  background-color: rgba(63, 48, 38, 1);
+  background-color: #f4efe8;
   padding: 50px 80px;
 }
 
@@ -742,14 +786,14 @@ footer .inner .upper {
   width: 100%;
   min-width: 1280px;
   height: 180px;
-  border-bottom: 1px solid #9c7a4a;
+  border-bottom: 1px solid #2e2a26;
   padding-bottom: 20px;
   position: relative;
   align-items: center;
 }
 
 footer .inner .upper .logo {
-  color: #f4efe8;
+  color: #2e2a26;
   position: absolute;
   display: flex;
   align-items: center;
@@ -764,7 +808,7 @@ footer .inner .upper .logo img {
 }
 
 footer .inner .upper .logo h1 {
-  font-family: 'Alegreya';
+  font-family: 'Libre Caslon Text', serif;
   font-size: 20px;
   font-weight: 200;
   opacity: 0.6;
@@ -781,7 +825,7 @@ footer .inner .upper ul {
 }
 
 footer .inner .upper ul li a {
-  color: #f4efe8;
+  color: #2e2a26;
   font-size: 16px;
   font-family: 'Noto Sans';
   opacity: 0.6;
@@ -797,9 +841,9 @@ footer .inner .lower {
 }
 
 footer .inner .lower p {
-  font-family: 'Alegreya';
+  font-family: 'Libre Caslon Text', serif;
   font-size: 14px;
-  color: #f4efe8;
+  color: #2e2a26;
   opacity: 0.5;
   margin-bottom: 20px;
 }
@@ -812,6 +856,10 @@ footer .inner .lower ul {
 }
 
 footer .inner .lower ul li i {
-  color: #f4efe8;
+  color: #2e2a26;
   font-size: 25px;
+}
+footer .inner .lower ul li img {
+  width: 40px;
+  margin-top: 5px;
 }
