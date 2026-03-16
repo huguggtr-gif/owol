@@ -1310,8 +1310,12 @@ footer .inner .lower ul li img {
     display: none;
   }
 
+  .slider-container {
+    padding: 0 10px;
+  }
+
   #content {
-    padding: 30px 0;
+    padding: 20px 0;
   }
 
   #content .inner {
@@ -1328,12 +1332,12 @@ footer .inner .lower ul li img {
 
   #content .card {
     width: 100%;
-   
+
   }
 
   #content .card p {
     display: none;
-    
+
   }
 
   #content .card .offer img {
@@ -1399,12 +1403,75 @@ footer .inner .lower ul li img {
     display: none;
   }
 
+  #winter_travel {
+    padding: 50px 10px;
+  }
+
   #winter_travel .inner .txt {
     width: 100%;
 
     margin-top: 10px;
     margin-left: 0px;
   }
+
+  #winter_travel .inner .txt .button button {
+    margin-top: 30px;
+  }
+
+  #winter_travel .inner .img .title-wrap h2 {
+    font-size: 16px;
+  }
+
+  #winter_travel .inner .img .title-wrap h1 {
+    font-size: 55px;
+  }
+
+  #winter_travel .inner .img .info-text {
+    top: 25%;
+  }
+
+  #winter_travel .inner .img .info-date {
+    display: none;
+  }
+
+  #winter_travel .inner .img {
+    width: 100%;
+  }
+
+.room_img {
+    display: grid !important; /* flex 대신 grid 사용 */
+    grid-template-columns: repeat(2, 1fr); /* 가로 2칸 */
+    grid-template-rows: repeat(2, 1fr);    /* 세로 2칸 */
+    width: 100% !important;
+    gap: 0; /* 이미지 사이 간격 (필요하면 5px 정도로 조정 가능) */
+  }
+
+  .room_img li {
+    width: 100% !important;
+    height: 50vw !important; /* 모바일에서 정사각형에 가깝게 높이 조절 */
+  }
+
+  .room_img li p {
+    top: 20px !important; /* 텍스트 위치 살짝 조정 */
+    left: 20px !important;
+    font-size: 14px !important; /* 폰트 크기 축소 */
+    letter-spacing: 2px !important;
+  }
+
+  .room_img li a img {
+   display: none;
+  }
+
+  footer {
+    padding:20px;}
+  footer .inner .upper ul {
+    display:none;}
+    footer .inner .upper .logo {
+      margin-top:10px;}
+
+footer .inner .lower p {
+  display:none;
+}
 
 
 }
