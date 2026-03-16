@@ -1154,26 +1154,112 @@ footer .inner .lower ul li img {
     font-size: 16px;
   }
 
-  #introduce {
-    padding: 100px 0;
-  }
-
-  #introduce .inner {
-    margin: 40px auto;
-  }
-
-  #introduce .img {
+#introduce .inner {
+    width: 100% !important;
+    max-width: 1200px !important; /* 전체적인 틀 유지 */
+    margin: 0 auto !important;
+    padding: 0 50px !important; /* 양옆에만 최소 여백 */
+    display: flex;
     flex-direction: column;
-    gap: 30px;
+    align-items: center; /* 자식 요소들을 가로축 중앙으로 */
   }
 
-  #introduce .img-box {
+#introduce .img {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; /* 내부 요소들을 가운데로 모음 */
+    gap: 100px; /* 이미지와 텍스트 사이 간격 충분히 */
+    width: 130%;
+    margin: 0 auto;
+  }
+#introduce .img-box {
+    flex: 0 0 45%; 
+    max-width: 480px; /* 너무 작아지지 않게 조정 */
+  }
+
+#introduce .img .txt {
+    flex: 0 0 45%; /* 이미지와 비슷한 비중으로 공간 확보 */
+    text-align: left;
+    margin: 0;
+  }
+
+#introduce .img h2 {
+    margin-top: 0;
+    display: inline-block; /* 밑줄이 글자 길이에 맞게 */
+  }
+}
+
+  #content {
+    padding: 60px 0;
+    /* 여백 살짝 조정 */
+  }
+
+  #content .inner h1 {
+
+    color: #f4efe8;
+    margin-top: 30px;
+    margin-bottom: 75px;
+  }
+
+  #content .inner .wrap {
+    display: flex;
+    gap: 20px;
+    /* 카드 사이 간격 */
+    padding: 0 40px;
+    /* 시작과 끝 여백 */
+    width: max-content;
+    /* 자식 요소 너비만큼 늘어남 */
+  }
+
+  #content .inner .wrap .card {
+    /* [핵심] 2.5개를 보여주기 위한 계산식 */
+    /* 화면 너비(100vw)에서 좌우 여백과 간격을 고려해 2.5로 나눕니다 */
+    flex: 0 0 calc((100vw - 80px - 40px) / 2.5);
+    min-height: auto;
+    margin: 0;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  #content .inner .wrap .card .offer {
     width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 15px;
   }
 
-  #introduce .img h2 {
-    margin-top: 20px;
-    font-size: 24px;
+  #content .inner .wrap .card h2 {
+    font-size: 14px;
+    white-space: normal;
+    /* 제목이 길면 두 줄로 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  #content .inner .wrap .card p {
+    font-size: 13px;
+    line-height: 1.4;
+    overflow: hidden;
+  }
+
+  #content .slide-btn {
+    display: none;
+  }
+
+  .view-box {
+    width: 100%;
+    overflow-x: auto;
+    /* 가로 스크롤 허용 */
+    -webkit-overflow-scrolling: touch;
+    /* 모바일/태블릿 부드러운 스크롤 */
+    padding: 20px 0;
+  }
+
+  .view-box::-webkit-scrollbar {
+    display: none;
   }
 
   #winter_travel .inner {
@@ -1191,6 +1277,30 @@ footer .inner .lower ul li img {
     margin: 30px;
     padding: 30px;
   }
+
+  #winter_travel .inner .txt .button button {
+    margin-top: 30px;
+
+  }
+
+  #winter_travel .inner .img .title-wrap h1 {
+    font-size: 50px;
+
+  }
+
+  #winter_travel .inner .img .title-wrap h2 {
+    font-size: 20px;
+  }
+
+  #winter_travel .inner .img .info-text {
+    top: 25%;
+
+  }
+
+  .room_img li p {
+    top: 20px;
+    left: 20px;
+  }
 }
 
 
@@ -1199,7 +1309,7 @@ footer .inner .lower ul li img {
     width: 100% !important;
     padding: 0 !important;
     /* 패딩이 있으면 카드가 밀립니다 */
-    overflow: hidden;
+    overflow: hidde;
   }
 
   header {
@@ -1264,7 +1374,7 @@ footer .inner .lower ul li img {
   }
 
   #introduce {
-    padding-top: 100px;
+    padnding-top: 100px;
     padding-bottom: 10px;
   }
 
@@ -1388,8 +1498,8 @@ footer .inner .lower ul li img {
     padding: 3px 0;
   }
 
-#content .inner .wrap .card .button {
-    border-top:0;
+  #content .inner .wrap .card .button {
+    border-top: 0;
   }
 
   #content .inner h1 {
