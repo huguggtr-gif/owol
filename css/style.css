@@ -393,8 +393,9 @@ header .txt p {
 
 .m-link-wrap a {
   font-size: 18px;
+  font-family: 'Noto Sans';
   font-weight: bold;
-  color: #3a342e;
+  color: #7a6a5e;
 }
 
 .m-link-wrap .arrow {
@@ -1314,6 +1315,9 @@ footer .inner .lower ul li img {
   #content .card {
     width: 260px;
   }
+   #content .card p{
+    display: none;
+  }
 
   #content .card .offer img {
     height: 160px;
@@ -1325,9 +1329,21 @@ footer .inner .lower ul li img {
   }
 
   #content .inner .wrap .card {
-    flex: 0 0 100%;
+    min-height:320px;
+    flex: 0 0 90%;
+    margin: 0 auto;
     scroll-snap-align: start;
+     padding:10px;
   }
+  #content .inner .wrap .card .button{
+  margin-top:10px;
+  padding:8px 15px 0 15px;
+}
+
+#content .inner .wrap .card .button button{
+  font-size:14px;
+  padding:3px 0;
+}
 
   #content .inner h1 {
     font-size: 25px;
@@ -1338,9 +1354,12 @@ footer .inner .lower ul li img {
     display: none;
   }
 
-  /* room 이미지 모바일에서도 가로 유지 */
-  .room_img {
-    flex-direction: row;
-    height: 300px;
-  }
+#winter_travel .inner .txt {
+  width:100%;
+ 
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+ 
 }
