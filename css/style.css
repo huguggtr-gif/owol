@@ -579,16 +579,14 @@ header .txt p {
   align-items: center;
   justify-content: center;
   width: 100%;
-  /* 너비를 100%로 변경 */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 50px;
-  /* 화살표가 들어갈 공간 확보 */
+
 }
 
 .view-box {
   width: 100%;
-  /* 고정 너비 1010px 해제 */
   max-width: 1010px;
   overflow: hidden;
 }
@@ -610,13 +608,11 @@ header .txt p {
 
 #content .inner .wrap {
   width: max-content;
-  /* 내부 콘텐츠 길이에 맞게 자동 확장 */
   margin: 0;
-  /* 기존 margin: auto 제거 */
   display: flex;
   gap: 25px;
   transition: transform 0.5s ease-in-out;
-  /* 이동 애니메이션 */
+
 }
 
 #content .inner .slide-btn {
@@ -627,7 +623,6 @@ header .txt p {
   color: #f4efe8;
   width: 50px;
   height: 50px;
-
   font-size: 20px;
   z-index: 20;
   transition: 0.3s;
@@ -648,7 +643,6 @@ header .txt p {
 #content .inner .wrap .card {
   width: 320px;
   flex-shrink: 0;
-  /* 창이 좁아져도 카드가 줄어들지 않음 */
   min-height: 458px;
   border: 1px solid #f4efe8;
   background-color: rgba(255, 255, 255, 0.05);
@@ -1394,6 +1388,10 @@ footer .inner .lower ul li img {
     padding: 3px 0;
   }
 
+#content .inner .wrap .card .button {
+    border-top:0;
+  }
+
   #content .inner h1 {
     font-size: 25px;
     margin-bottom: 30px;
@@ -1438,40 +1436,52 @@ footer .inner .lower ul li img {
     width: 100%;
   }
 
-.room_img {
-    display: grid !important; /* flex 대신 grid 사용 */
-    grid-template-columns: repeat(2, 1fr); /* 가로 2칸 */
-    grid-template-rows: repeat(2, 1fr);    /* 세로 2칸 */
+  .room_img {
+    display: grid !important;
+    /* flex 대신 grid 사용 */
+    grid-template-columns: repeat(2, 1fr);
+    /* 가로 2칸 */
+    grid-template-rows: repeat(2, 1fr);
+    /* 세로 2칸 */
     width: 100% !important;
-    gap: 0; /* 이미지 사이 간격 (필요하면 5px 정도로 조정 가능) */
+    gap: 0;
+    /* 이미지 사이 간격 (필요하면 5px 정도로 조정 가능) */
   }
 
   .room_img li {
     width: 100% !important;
-    height: 50vw !important; /* 모바일에서 정사각형에 가깝게 높이 조절 */
+    height: 50vw !important;
+    /* 모바일에서 정사각형에 가깝게 높이 조절 */
   }
 
   .room_img li p {
-    top: 20px !important; /* 텍스트 위치 살짝 조정 */
+    top: 20px !important;
+    /* 텍스트 위치 살짝 조정 */
     left: 20px !important;
-    font-size: 14px !important; /* 폰트 크기 축소 */
+    font-size: 14px !important;
+    /* 폰트 크기 축소 */
     letter-spacing: 2px !important;
   }
 
   .room_img li a img {
-   display: none;
+    display: none;
   }
 
   footer {
-    padding:20px;}
-  footer .inner .upper ul {
-    display:none;}
-    footer .inner .upper .logo {
-      margin-top:10px;}
+    padding: 20px;
+  }
 
-footer .inner .lower p {
-  display:none;
-}
+  footer .inner .upper ul {
+    display: none;
+  }
+
+  footer .inner .upper .logo {
+    margin-top: 10px;
+  }
+
+  footer .inner .lower p {
+    display: none;
+  }
 
 
 }
