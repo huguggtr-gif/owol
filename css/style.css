@@ -5,8 +5,7 @@
 
 @font-face {
   font-family: 'JEJU';
-  src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2')
-    format('woff2');
+  src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -17,14 +16,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 ul,
 li {
   list-style: none;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 button {
   font-family: inherit;
   background-color: transparent;
@@ -33,14 +35,23 @@ button {
   color: inherit;
   cursor: pointer;
 }
+
 body {
   font-family: 'Noto Sans', 'JEJU', serif;
 }
 
+.inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+
 /* --- Header --- */
 header {
   width: 100%;
-  min-width: 1280px;
   height: 800px;
   position: relative;
   overflow: hidden;
@@ -67,9 +78,10 @@ header {
 }
 
 .header-ui-wrap:hover .nav li a,
-.header-ui-wrap:hover .gnb > li > a {
+.header-ui-wrap:hover .gnb>li>a {
   color: #7a6a5e;
 }
+
 .header-ui-wrap:hover .logo h1 {
   color: #9c7a4a;
 }
@@ -81,6 +93,7 @@ header {
   text-decoration: none;
   color: inherit;
 }
+
 .logo-box {
   position: relative;
   width: 160px;
@@ -149,13 +162,13 @@ header .gnb {
   gap: 80px;
 }
 
-header .gnb > li {
+header .gnb>li {
   width: 140px;
   text-align: left;
   padding-bottom: 30px;
 }
 
-header .gnb > li > a {
+header .gnb>li>a {
   color: #f4efe8;
   font-weight: bold;
   font-size: 18px;
@@ -189,7 +202,6 @@ header .gnb > li > a {
   justify-content: center;
   gap: 80px;
   padding: 40px 0 80px 0;
-  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -199,6 +211,7 @@ header .gnb > li > a {
   flex-direction: column;
   gap: 15px;
 }
+
 .sub-col a {
   color: #7a6a5e;
   font-family: 'Noto Sans';
@@ -210,32 +223,44 @@ header .gnb > li > a {
   font-weight: bold;
 }
 
+
+
 /* 메인이미지 슬라이더 */
 .slider {
   position: absolute;
   inset: 0;
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
+
 .slide {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: 1s;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 1s;
+  z-index: 1;
 }
+
 .slide.active {
   opacity: 1;
+  visibility: visible;
+  z-index: 2;
 }
 
 .slide.active img {
   transform: scale(1.1);
 }
+
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1);
-  transition: transform 6s ease;
+
 }
+
+
 header .slider button {
   position: absolute;
   top: 70%;
@@ -247,8 +272,9 @@ header .slider button {
   width: 60px;
   height: 60px;
   cursor: pointer;
-  z-index: 3;
+  z-index: 999;
   transition: 0.3s;
+  pointer-events: auto;
 }
 
 header .slider button:hover {
@@ -257,19 +283,34 @@ header .slider button:hover {
 
 .prev {
   left: 20px;
+  padding:20px;
 }
 
 .next {
   right: 20px;
+  padding:20px;
+}
+
+.header-ui-wrap,
+.txt-wrap {
+  pointer-events: none;
+}
+
+.header-ui-wrap .nav,
+.header-ui-wrap .gnb,
+.header-ui-wrap .logo,
+.full-dropdown,
+.txt-wrap .txt {
+  pointer-events: auto;
 }
 
 .txt-wrap {
   position: absolute;
   bottom: 100px;
-  left: 50%;
+  left: 60%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1280px;
+  
   z-index: 10;
   color: #f4efe8;
 }
@@ -292,10 +333,118 @@ header .txt p {
   opacity: 0.7;
 }
 
+/* --- 모바일용 NAV (이하 기능 유지용 추가) --- */
+
+/* 1. 모바일 열기 버튼 (PC에선 숨김) */
+.m-open-btn {
+  display: none;
+  position: absolute;
+  top: 40px;
+  /* 로고 높이에 맞춰 조정 */
+  right: 20px;
+  font-size: 28px;
+  color: #f4efe8;
+  /* 배경이 어두울 때 대비 */
+  z-index: 105;
+  cursor: pointer;
+}
+
+/* 2. 모바일 슬라이드 메뉴 본체 */
+.m-menu-slide {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  /* 처음에는 화면 오른쪽에 숨김 */
+  width: 80%;
+  /* 모바일 화면의 80% 차지 */
+  height: 100vh;
+  background-color: #f4efe8;
+  z-index: 1000;
+  padding: 80px 20px 50px;
+  /* 닫기 버튼 공간 확보 */
+  transition: right 0.4s ease;
+  pointer-events: auto;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.m-menu-slide.active {
+  right: 0;
+  /* 열림 상태 */
+}
+
+/* 3. 모바일 내부 리스트 및 아코디언 */
+.m-gnb-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.m-link-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  cursor: pointer;
+}
+
+.m-link-wrap a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #3a342e;
+}
+
+.m-link-wrap .arrow {
+  font-size: 14px;
+  color: #7a6a5e;
+  transition: transform 0.3s ease;
+}
+
+/* 4. 모바일 서브메뉴 제어 */
+.sub-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.sub-menu li a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 15px;
+  color: #7a6a5e;
+}
+
+/* 닫기 버튼 */
+.m-close-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 30px;
+  color: #3a342e;
+  cursor: pointer;
+}
+
+/* 아코디언 활성화 상태 */
+.m-gnb-item.active .sub-menu {
+  max-height: 400px;
+  /* 서브메뉴 길이에 따라 조절 */
+  padding-bottom: 10px;
+}
+
+.m-gnb-item.active .arrow {
+  transform: rotate(180deg);
+}
+
+/* 5. 미디어 쿼리 제어 (768px 이하에서만 노출) */
+@media (max-width: 768px) {
+  .m-open-btn {
+    display: block;
+    /* 모바일에서 햄버거 버튼 보임 */
+  }
+}
+
+
 /* --- Notice-bar  --- */
 #introduce {
   width: 100%;
-  min-width: 1280px;
   padding: 150px 0;
   position: relative;
   background-color: #f4efe8;
@@ -326,7 +475,6 @@ header .txt p {
 
 #introduce .inner {
   width: 100%;
-  min-width: 1280px;
   margin: 80px auto;
   text-align: center;
 }
@@ -364,10 +512,12 @@ header .txt p {
   width: 100%;
   display: block;
 }
+
 #introduce .img-default,
 #introduce .img-hover {
   transition: all 0.6s ease;
 }
+
 /* hover image */
 
 #introduce .img-hover {
@@ -419,17 +569,20 @@ header .txt p {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1200px; /* 카드 3개 너비 + 간격 합계 */
+  max-width: 1200px;
+  /* 카드 3개 너비 + 간격 합계 */
   margin: 0 auto;
 }
+
 .view-box {
-  width: 1010px; /* (카드너비 320 * 3) + (간격 25 * 2) */
-  overflow: hidden; /* 영역 밖 카드는 숨김 */
+  width: 1010px;
+  /* (카드너비 320 * 3) + (간격 25 * 2) */
+  overflow: hidden;
+  /* 영역 밖 카드는 숨김 */
 }
 
 #content {
   width: 100%;
-  min-width: 1280px;
   background-color: #7a6a5e;
   padding: 100px 0px;
   text-align: center;
@@ -444,12 +597,16 @@ header .txt p {
 }
 
 #content .inner .wrap {
-  width: max-content; /* 내부 콘텐츠 길이에 맞게 자동 확장 */
-  margin: 0; /* 기존 margin: auto 제거 */
+  width: max-content;
+  /* 내부 콘텐츠 길이에 맞게 자동 확장 */
+  margin: 0;
+  /* 기존 margin: auto 제거 */
   display: flex;
   gap: 25px;
-  transition: transform 0.5s ease-in-out; /* 이동 애니메이션 */
+  transition: transform 0.5s ease-in-out;
+  /* 이동 애니메이션 */
 }
+
 #content .inner .slide-btn {
   position: absolute;
   top: 50%;
@@ -471,13 +628,15 @@ header .txt p {
 #content .inner .prev-btn {
   left: -70px;
 }
+
 #content .inner .next-btn {
   right: -70px;
 }
 
 #content .inner .wrap .card {
   width: 320px;
-  flex-shrink: 0; /* 창이 좁아져도 카드가 줄어들지 않음 */
+  flex-shrink: 0;
+  /* 창이 좁아져도 카드가 줄어들지 않음 */
   min-height: 458px;
   border: 1px solid #f4efe8;
   background-color: rgba(255, 255, 255, 0.05);
@@ -488,6 +647,7 @@ header .txt p {
   box-sizing: border-box;
   transition: all 0.4s ease;
 }
+
 #content .inner .wrap .card:hover {
   transform: translateY(-12px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -568,7 +728,6 @@ header .txt p {
 
 #winter_travel {
   width: 100%;
-  min-width: 1280px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -583,8 +742,9 @@ header .txt p {
   opacity: 1;
   transform: translateY(0);
 }
+
 #winter_travel .inner {
-  width: 1060px;
+  max-width: 1060px;
   height: 450px;
   display: flex;
   overflow: hidden;
@@ -737,7 +897,7 @@ header .txt p {
   opacity: 0;
 }
 
-.room_img li > img {
+.room_img li>img {
   width: 100%;
   height: auto;
   display: block;
@@ -764,9 +924,12 @@ header .txt p {
   transition: opacity 0.4s ease;
   z-index: 2;
 }
+
 .room_img li a img {
-  width: 100px; /* 원하는 가로 크기 (기본값보다 작게 설정) */
-  height: auto; /* 비율에 맞춰 세로 자동 조절 */
+  width: 100px;
+  /* 원하는 가로 크기 (기본값보다 작게 설정) */
+  height: auto;
+  /* 비율에 맞춰 세로 자동 조절 */
 }
 
 .room_img li:hover a {
@@ -776,15 +939,13 @@ header .txt p {
 /* footer */
 footer {
   width: 100%;
-  min-width: 1280px;
   height: 400px;
-  background-color: #f4efe8;
+  background-color: #fff;
   padding: 50px 80px;
 }
 
 footer .inner .upper {
   width: 100%;
-  min-width: 1280px;
   height: 180px;
   border-bottom: 1px solid #2e2a26;
   padding-bottom: 20px;
@@ -833,7 +994,6 @@ footer .inner .upper ul li a {
 
 footer .inner .lower {
   width: 100%;
-  min-width: 1280px;
   padding-top: 20px;
   display: flex;
   justify-content: space-between;
@@ -859,7 +1019,246 @@ footer .inner .lower ul li i {
   color: #2e2a26;
   font-size: 25px;
 }
+
 footer .inner .lower ul li img {
   width: 40px;
   margin-top: 5px;
+}
+
+
+@media (max-width: 1024px) {
+  header {
+    height: auto;
+    /* 고정 높이 해제 */
+    min-height: 500px;
+    padding-bottom: 50px;
+  }
+
+  /* 1. 헤더 UI를 가로 한 줄 배치가 가능하도록 설정 */
+  .header-ui-wrap {
+    position: relative;
+    /* absolute 해제 */
+    flex-direction: row !important;
+    /* 세로가 아닌 가로 배치 */
+    justify-content: space-between;
+    /* 양 끝으로 벌림 */
+    align-items: center;
+    /* 세로 중앙 정렬 */
+    padding: 20px 30px !important;
+    /* 여백 조정 */
+    margin-top: 0;
+    pointer-events: auto !important;
+    /* 터치 가능하게 */
+  }
+
+  /* 2. PC용 텍스트 메뉴 완전히 숨기기 */
+  header .nav,
+  header .menu-area {
+    display: none !important;
+  }
+
+  /* 3. 로고 설정 (왼쪽 배치) */
+  header .logo {
+    margin: 0 !important;
+    /* 가로 배치 시 마진 제거 */
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+
+  header .logo h1 {
+    display: none;
+  }
+
+  .logo-box {
+    width: 110px;
+    /* 로고 이미지 크기 축소 */
+    height: 55px;
+  }
+
+  /* 4. 햄버거 버튼(바 아이콘) 설정 (오른쪽 배치) */
+  .m-open-btn {
+    display: block !important;
+    /* 모바일 전용 버튼 깨우기 */
+    position: relative;
+    /* absolute 해제 및 flex 흐름 탑승 */
+    top: auto;
+    right: auto;
+    font-size: 26px;
+    color: #f4efe8;
+    /* 배경 슬라이더 위에서 보일 색상 */
+    z-index: 110;
+    cursor: pointer;
+  }
+
+  /* 호버 시 색상 변경 (사용자님 CSS 톤 유지) */
+  .header-ui-wrap:hover .m-open-btn {
+    color: #3a342e;
+  }
+
+  .txt-wrap {
+    left: 50%; /* 화면 중앙 근처로 이동 (기존 60%) */
+    transform: translateX(-50%);
+    bottom: 80px;
+    text-align: center; /* 태블릿부터는 가독성을 위해 중앙 정렬 추천 */
+    padding: 0 20px;
+  }
+
+  header .txt h1 {
+    font-size: 48px; /* 60px -> 48px */
+    margin-bottom: 15px;
+    word-break: keep-all; /* 한글/영어 단어 끊김 방지 */
+  }
+
+  header .txt p {
+    font-size: 14px; /* 15px -> 14px */
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+  /* 5. 기타 태블릿용 섹션 조정 */
+
+  .prev {
+  display:none;
+}
+
+.next {
+  display:none;
+}
+
+  #introduce {
+    padding: 100px 0;
+  }
+
+  #introduce .inner {
+    margin: 40px auto;
+  }
+
+  #introduce .img {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  #introduce .img-box {
+    width: 100%;
+  }
+
+  #introduce .img h2 {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+
+  #winter_travel .inner {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #winter_travel .inner .img {
+    width: 100%;
+    height: 350px;
+  }
+
+  #winter_travel .inner .txt {
+    width: 100%;
+    margin: 30px;
+    padding: 30px;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  header {
+    height: 500px;
+  }
+
+  /* 1. PC용 메뉴들 완전히 숨기기 */
+  header .nav,
+  header .menu-area {
+    display: none !important;
+  }
+
+  /* 2. 햄버거 버튼(바 아이콘) 보이게 하기 */
+  .m-open-btn {
+    display: block !important;
+    /* 강제로 보이게 함 */
+    position: absolute;
+    top: 35px;
+    right: 25px;
+    font-size: 28px;
+    color: #f4efe8;
+    z-index: 999;
+    /* 다른 요소보다 위에 오도록 */
+    pointer-events: auto;
+    /* 클릭 가능하게 */
+  }
+
+  /* 3. 모바일 메뉴 본체 설정 */
+  .m-menu-slide {
+    display: block !important;
+    /* 기존에 숨겨져 있었다면 해제 */
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* 처음엔 화면 밖에 숨김 */
+    width: 80%;
+    height: 100vh;
+    background-color: #f4efe8;
+    z-index: 1000;
+    padding: 80px 30px;
+    transition: right 0.4s ease;
+    pointer-events: auto;
+  }
+
+  /* 활성화 되었을 때 위치 */
+  .m-menu-slide.active {
+    right: 0;
+  }
+
+  /* 4. 기존 스타일 유지 */
+  header .logo h1 {
+    font-size: 24px;
+  }
+
+
+  .txt-wrap {
+    bottom: 60px; /* 아래 여백 축소 */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  header .txt h1 {
+    font-size: 32px; /* 36px -> 32px (너무 크면 줄바꿈이 심해짐) */
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  header .txt p {
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.9; /* 모바일은 배경 대비를 위해 조금 더 진하게 */
+    padding: 0 10px;
+  }
+}
+
+  .view-box {
+    width: 100%;
+  }
+
+
+  #content .wrap {
+    gap: 15px;
+  }
+
+  #content .card {
+    width: 260px;
+  }
+
+  .room_img {
+    flex-direction: column;
+  }
+
+  .room_img li {
+    width: 100%;
+  }
 }
