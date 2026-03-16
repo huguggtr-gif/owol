@@ -419,7 +419,9 @@ header .txt p {
   right: 25px;
   font-size: 30px;
   color: #3a342e;
+  z-index: 1010;
   cursor: pointer;
+  display: block !important;
 }
 
 /* 아코디언 활성화 상태 */
@@ -1261,4 +1263,3 @@ footer .inner .lower ul li img {
   .room_img li {
     width: 100%;
   }
-}
