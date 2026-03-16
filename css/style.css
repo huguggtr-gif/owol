@@ -1170,6 +1170,13 @@ footer .inner .lower ul li img {
 
 
 @media (max-width: 768px) {
+  .inner {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 20px; /* 양옆 여백만 살짝 */
+    overflow: hidden; /* 영역 밖으로 나가는 것 차단 */
+  }
+  
   header {
     height: 500px;
   }
@@ -1179,6 +1186,7 @@ footer .inner .lower ul li img {
   header .menu-area {
     display: none !important;
   }
+
 
   /* 2. 햄버거 버튼(바 아이콘) 보이게 하기 */
   .m-open-btn {
@@ -1230,14 +1238,15 @@ footer .inner .lower ul li img {
   }
 
   header .txt h1 {
-    font-size: 32px; /* 36px -> 32px (너무 크면 줄바꿈이 심해짐) */
-    line-height: 1.2;
-    margin-bottom: 10px;
+    font-size: 20px; /* 화면에 맞게 대폭 축소 */
+    white-space: normal; /* 줄바꿈 허용 */
+    word-break: keep-all; /* 단어 단위 줄바꿈 (선택사항) */
+    padding: 0 10px;
   }
 
   header .txt p {
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 12px;
+    line-height: 1.2;
     opacity: 0.9; /* 모바일은 배경 대비를 위해 조금 더 진하게 */
     padding: 0 10px;
   }
