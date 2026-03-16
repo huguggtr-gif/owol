@@ -47,6 +47,12 @@ body {
   padding: 0 20px;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 
 
 /* --- Header --- */
@@ -283,12 +289,12 @@ header .slider button:hover {
 
 .prev {
   left: 20px;
-  padding:20px;
+  padding: 20px;
 }
 
 .next {
   right: 20px;
-  padding:20px;
+  padding: 20px;
 }
 
 .header-ui-wrap,
@@ -310,7 +316,7 @@ header .slider button:hover {
   left: 60%;
   transform: translateX(-50%);
   width: 100%;
-  
+
   z-index: 10;
   color: #f4efe8;
 }
@@ -421,7 +427,7 @@ header .txt p {
   color: #3a342e;
   z-index: 1010;
   cursor: pointer;
-  display: block !important;
+  display: flex !important;
 }
 
 /* 아코디언 활성화 상태 */
@@ -439,7 +445,7 @@ header .txt p {
 @media (max-width: 768px) {
   .m-open-btn {
     display: block;
-   
+
   }
 }
 
@@ -571,16 +577,19 @@ header .txt p {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  /* 너비를 100%로 변경 */
   max-width: 1200px;
-  /* 카드 3개 너비 + 간격 합계 */
   margin: 0 auto;
+  padding: 0 50px;
+  /* 화살표가 들어갈 공간 확보 */
 }
 
 .view-box {
-  width: 1010px;
-  /* (카드너비 320 * 3) + (간격 25 * 2) */
+  width: 100%;
+  /* 고정 너비 1010px 해제 */
+  max-width: 1010px;
   overflow: hidden;
-  /* 영역 밖 카드는 숨김 */
 }
 
 #content {
@@ -619,7 +628,7 @@ header .txt p {
   height: 50px;
 
   font-size: 20px;
-  z-index: 10;
+  z-index: 20;
   transition: 0.3s;
 }
 
@@ -628,11 +637,11 @@ header .txt p {
 }
 
 #content .inner .prev-btn {
-  left: -70px;
+  left: 0px;
 }
 
 #content .inner .next-btn {
-  right: -70px;
+  right: 0px;
 }
 
 #content .inner .wrap .card {
@@ -867,13 +876,18 @@ header .txt p {
 }
 
 /*하단 룸이미지*/
-.room {
-  width: 100%;
-}
-
 .room_img {
   display: flex;
   width: 100%;
+
+}
+
+
+.room_img li>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
 }
 
 .room_img li {
@@ -883,7 +897,7 @@ header .txt p {
   transition: transform 0.6s ease;
 }
 
-.room_img li:hover img {
+.room_img li:hover>img {
   transform: scale(1.2);
 }
 
@@ -1098,35 +1112,52 @@ footer .inner .lower ul li img {
   }
 
   .txt-wrap {
-    left: 50%; /* 화면 중앙 근처로 이동 (기존 60%) */
+    left: 50%;
+    /* 화면 중앙 근처로 이동 (기존 60%) */
     transform: translateX(-50%);
     bottom: 80px;
-    text-align: center; /* 태블릿부터는 가독성을 위해 중앙 정렬 추천 */
+    text-align: center;
+    /* 태블릿부터는 가독성을 위해 중앙 정렬 추천 */
     padding: 0 20px;
   }
 
   header .txt h1 {
-    font-size: 48px; /* 60px -> 48px */
+    font-size: 50px;
+   
     margin-bottom: 15px;
-    word-break: keep-all; /* 한글/영어 단어 끊김 방지 */
+    word-break: keep-all;
+    /* 한글/영어 단어 끊김 방지 */
   }
 
   header .txt p {
-    font-size: 14px; /* 15px -> 14px */
+    font-size: 14px;
+    /* 15px -> 14px */
     max-width: 600px;
     margin: 0 auto;
   }
-}
+
 
   /* 5. 기타 태블릿용 섹션 조정 */
 
   .prev {
-  display:none;
-}
+    display: none;
+  }
 
-.next {
-  display:none;
-}
+  .next {
+    display: none;
+  }
+
+  #introduce .notice-bar {
+    padding-left: 50px;
+    /* 여백 축소 */
+    justify-content: left;
+
+
+  }
+
+  #introduce .notice-bar a {
+    font-size: 16px;
+  }
 
   #introduce {
     padding: 100px 0;
@@ -1165,97 +1196,95 @@ footer .inner .lower ul li img {
     margin: 30px;
     padding: 30px;
   }
-
-
+}
 
 
 @media (max-width: 768px) {
   .inner {
     width: 100% !important;
     max-width: none !important;
-    padding: 0 20px; /* 양옆 여백만 살짝 */
-    overflow: hidden; /* 영역 밖으로 나가는 것 차단 */
+    padding: 0 20px;
+    overflow: hidden;
   }
-  
+
   header {
     height: 500px;
   }
 
-  /* 1. PC용 메뉴들 완전히 숨기기 */
   header .nav,
   header .menu-area {
     display: none !important;
   }
 
-
-  /* 2. 햄버거 버튼(바 아이콘) 보이게 하기 */
   .m-open-btn {
     display: block !important;
-    /* 강제로 보이게 함 */
     position: absolute;
     top: 35px;
     right: 25px;
     font-size: 28px;
     color: #f4efe8;
     z-index: 999;
-    /* 다른 요소보다 위에 오도록 */
     pointer-events: auto;
-    /* 클릭 가능하게 */
   }
 
-  /* 3. 모바일 메뉴 본체 설정 */
   .m-menu-slide {
     display: block !important;
-    /* 기존에 숨겨져 있었다면 해제 */
     position: fixed;
     top: 0;
     right: -100%;
-    /* 처음엔 화면 밖에 숨김 */
     width: 80%;
     height: 100vh;
     background-color: #f4efe8;
     z-index: 1000;
     padding: 80px 30px;
     transition: right 0.4s ease;
-    pointer-events: auto;
   }
 
-  /* 활성화 되었을 때 위치 */
   .m-menu-slide.active {
     right: 0;
   }
 
-  /* 4. 기존 스타일 유지 */
   header .logo h1 {
     font-size: 24px;
   }
 
-
   .txt-wrap {
-    bottom: 60px; /* 아래 여백 축소 */
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
   }
 
   header .txt h1 {
-    font-size: 20px; /* 화면에 맞게 대폭 축소 */
-    white-space: normal; /* 줄바꿈 허용 */
-    word-break: keep-all; /* 단어 단위 줄바꿈 (선택사항) */
+    font-size: 20px;
+    white-space: normal;
+    word-break: keep-all;
     padding: 0 10px;
   }
 
   header .txt p {
     font-size: 12px;
     line-height: 1.2;
-    opacity: 0.9; /* 모바일은 배경 대비를 위해 조금 더 진하게 */
+    opacity: 0.9;
     padding: 0 10px;
   }
-}
+
+
+
+  #introduce .notice-bar {
+    padding-left: 20px;
+    /* 여백 축소 */
+    justify-content: left;
+
+
+  }
+
+  #introduce .notice-bar a {
+    font-size: 12px;
+  }
 
   .view-box {
     width: 100%;
   }
-
 
   #content .wrap {
     gap: 15px;
@@ -1265,10 +1294,9 @@ footer .inner .lower ul li img {
     width: 260px;
   }
 
+  /* room 이미지 모바일에서도 가로 유지 */
   .room_img {
-    flex-direction: column;
+    flex-direction: row;
+    height: 300px;
   }
-
-  .room_img li {
-    width: 100%;
-  }
+}
