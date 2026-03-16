@@ -1123,7 +1123,7 @@ footer .inner .lower ul li img {
 
   header .txt h1 {
     font-size: 50px;
-   
+
     margin-bottom: 15px;
     word-break: keep-all;
     /* 한글/영어 단어 끊김 방지 */
@@ -1268,13 +1268,15 @@ footer .inner .lower ul li img {
     padding: 0 10px;
   }
 
-
+  #introduce {
+    padding-top: 100px;
+    padding-bottom: 10px;
+  }
 
   #introduce .notice-bar {
-    padding-left: 20px;
-    /* 여백 축소 */
-    justify-content: left;
 
+    justify-content: left;
+    padding-right: 30px;
 
   }
 
@@ -1282,8 +1284,27 @@ footer .inner .lower ul li img {
     font-size: 12px;
   }
 
+  #introduce .inner h1 {
+    font-size: 25px;
+  }
+
+  #introduce .inner p {
+    font-family: 'Noto Sans';
+    margin-bottom: 30px;
+    font-size: 15px;
+  }
+
   .view-box {
-    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .view-box::-webkit-scrollbar {
+    display: none;
+  }
+
+  #content {
+    padding: 40px 0;
   }
 
   #content .wrap {
@@ -1292,6 +1313,29 @@ footer .inner .lower ul li img {
 
   #content .card {
     width: 260px;
+  }
+
+  #content .card .offer img {
+    height: 160px;
+    object-fit: cover;
+  }
+
+  #content .inner .wrap {
+    width: auto;
+  }
+
+  #content .inner .wrap .card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  #content .inner h1 {
+    font-size: 25px;
+    margin-bottom: 30px;
+  }
+
+  #content .slide-btn {
+    display: none;
   }
 
   /* room 이미지 모바일에서도 가로 유지 */
