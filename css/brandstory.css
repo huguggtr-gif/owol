@@ -1,11 +1,9 @@
-/* --- 폰트 및 초기화 유지 --- */
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
 
 @font-face {
   font-family: 'JEJU';
-  src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2')
-    format('woff2');
+  src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -16,14 +14,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 ul,
 li {
   list-style: none;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 button {
   font-family: inherit;
   background-color: transparent;
@@ -32,26 +33,39 @@ button {
   color: inherit;
   cursor: pointer;
 }
+
 body {
   background-color: #f4efe8;
   font-family: 'Noto Sans', 'JEJU', serif;
 }
 
-/* --- Header ---*/
+.inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
+/* --- Header --- */
 header {
   width: 100%;
-  min-width: 1280px;
   height: 320px;
   position: relative;
 }
 
 .header-ui-wrap {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 220px;
   padding-top: 50px;
   display: flex;
   flex-direction: column;
@@ -62,26 +76,16 @@ header {
 
 .header-ui-wrap:hover {
   background: rgba(244, 239, 232, 0.98);
-  border-bottom: 1px solid #c9c3b8;
-}
-.header-ui-wrap::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #c9c3b8;
-}
-
-.full-dropdown {
-  border-top: none;
+  opacity: 90%;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .header-ui-wrap:hover .nav li a,
-.header-ui-wrap:hover .gnb > li > a {
+.header-ui-wrap:hover .gnb>li>a {
   color: #7a6a5e;
 }
+
 .header-ui-wrap:hover .logo h1 {
   color: #9c7a4a;
 }
@@ -93,6 +97,7 @@ header {
   text-decoration: none;
   color: inherit;
 }
+
 .logo-box {
   position: relative;
   width: 120px;
@@ -129,7 +134,7 @@ header .nav {
   right: 80px;
   display: flex;
   gap: 30px;
-  color: #9c7a4a;
+  color: #7a6a5e;
   font-size: 18px;
 }
 
@@ -144,22 +149,17 @@ header .logo {
 header .logo h1 {
   font-family: 'Libre Caslon Text', serif;
   font-size: 28px;
-  text-align: center;
-  font-weight: 450;
+  font-weight: 400;
   line-height: 1.1;
+  text-align: center;
 }
 
 header .menu-area {
   width: 100%;
   display: flex;
   justify-content: center;
-  position: relative;
+  border-top: 1.5px solid #c9c3b8;
   border-bottom: 1.5px solid #c9c3b8;
-  padding-bottom: 20px;
-}
-.menu-area:hover .full-dropdown {
-  max-height: 800px;
-  opacity: 1;
 }
 
 header .gnb {
@@ -168,21 +168,20 @@ header .gnb {
   gap: 80px;
 }
 
-header .gnb > li {
+header .gnb>li {
   width: 140px;
   text-align: left;
   padding-top: 30px;
-  padding-bottom: 5px;
+  padding-bottom: 30px;
 }
 
-header .gnb > li > a {
+header .gnb>li>a {
   color: #2e2a26;
-  font-weight: 400;
   font-size: 18px;
   transition: color 0.3s ease;
 }
 
-header .gnb > li > a::after {
+header .gnb>li>a::after {
   content: '';
   display: block;
   width: 0;
@@ -192,12 +191,7 @@ header .gnb > li > a::after {
   margin-top: 6px;
 }
 
-header .gnb > li:hover > a::after {
-  width: 100%;
-}
-
 /* 서브메뉴*/
-
 .full-dropdown {
   position: absolute;
   top: 100%;
@@ -211,16 +205,20 @@ header .gnb > li:hover > a::after {
     opacity 0.6s ease;
 
   background: rgba(244, 239, 232, 0.98);
-  border-top: 1.5px solid #c9c3b8;
+  border-top: 1px solid rgba(58, 52, 46, 0.1);
   z-index: 100;
+}
+
+.header-ui-wrap:hover .full-dropdown {
+  max-height: 800px;
+  opacity: 1;
 }
 
 .dropdown-inner {
   display: flex;
   justify-content: center;
   gap: 80px;
-  padding: 50px 0 80px 0;
-  max-width: 1280px;
+  padding: 40px 0 80px 0;
   margin: 0 auto;
 }
 
@@ -230,6 +228,7 @@ header .gnb > li:hover > a::after {
   flex-direction: column;
   gap: 15px;
 }
+
 .sub-col a {
   color: #7a6a5e;
   font-family: 'Noto Sans';
@@ -241,14 +240,118 @@ header .gnb > li:hover > a::after {
   font-weight: bold;
 }
 
+
+/* --- 모바일용 NAV  --- */
+
+/* 1. 모바일 열기 버튼 (PC에선 숨김) */
+.m-open-btn {
+  display: none;
+  position: absolute;
+  top: 40px;
+  /* 로고 높이에 맞춰 조정 */
+  right: 20px;
+  font-size: 28px;
+  color: #7a6a5e;
+  /* 배경이 어두울 때 대비 */
+  z-index: 105;
+  cursor: pointer;
+}
+
+/* 2. 모바일 슬라이드 메뉴 본체 */
+.m-menu-slide {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  /* 처음에는 화면 오른쪽에 숨김 */
+  width: 80%;
+  /* 모바일 화면의 80% 차지 */
+  height: 100vh;
+  background-color: #f4efe8;
+  z-index: 1000;
+  padding: 80px 20px 50px;
+  /* 닫기 버튼 공간 확보 */
+  transition: right 0.4s ease;
+  pointer-events: auto;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.m-menu-slide.active {
+  right: 0;
+  /* 열림 상태 */
+}
+
+/* 3. 모바일 내부 리스트 및 아코디언 */
+.m-gnb-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.m-link-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  cursor: pointer;
+}
+
+.m-link-wrap a {
+  font-size: 18px;
+  font-family: 'Noto Sans';
+  font-weight: bold;
+  color: #7a6a5e;
+}
+
+.m-link-wrap .arrow {
+  font-size: 14px;
+  color: #7a6a5e;
+  transition: transform 0.3s ease;
+}
+
+/* 4. 모바일 서브메뉴 제어 */
+.sub-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.sub-menu li a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 15px;
+  color: #7a6a5e;
+}
+
+/* 닫기 버튼 */
+.m-close-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 30px;
+  color: #7a6a5e;
+  z-index: 1010;
+  cursor: pointer;
+  display: flex !important;
+}
+
+/* 아코디언 활성화 상태 */
+.m-gnb-item.active .sub-menu {
+  max-height: 400px;
+  /* 서브메뉴 길이에 따라 조절 */
+  padding-bottom: 10px;
+}
+
+.m-gnb-item.active .arrow {
+  transform: rotate(180deg);
+}
+
 /* --- VIDEO --- */
 
 .video-wrap {
   position: relative;
   width: 90%;
   max-width: 1200px;
-  height: 650px;
-  margin: 10px auto;
+  margin: 0 auto;
+  padding-top: 56.25%;
   overflow: hidden;
 }
 
@@ -256,8 +359,10 @@ header .gnb > li:hover > a::after {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120%;
-  height: 120%;
+  width: 177.78%;
+  height: 177.78%;
+  min-width: 100%;
+  min-height: 100%;
   transform: translate(-50%, -50%);
   border: none;
 }
@@ -266,14 +371,14 @@ header .gnb > li:hover > a::after {
 
 #introduce {
   width: 100%;
-  min-width: 1280px;
+
   padding: 120px 0 40px 0;
   position: relative;
 }
 
 #introduce .brandstory {
-  width: 100%;
-  min-width: 1280px;
+
+
   margin: 120px auto 40px auto;
   text-align: center;
 }
@@ -291,6 +396,7 @@ header .gnb > li:hover > a::after {
   border: 1px solid #a3957c;
   margin: auto;
 }
+
 #introduce .brandstory h2 {
   font-family: 'Libre Caslon Text', serif;
   font-size: 20px;
@@ -315,19 +421,20 @@ header .gnb > li:hover > a::after {
 
 /* 이미지슬라이더*/
 
-/* --- 슬라이더 전체 사이즈 축소 버전 --- */
 #story-slider {
   width: 100%;
-  padding: 80px 0; /* 위아래 여백을 약간 줄임 */
+  padding: 80px 0;
+  /* 위아래 여백을 약간 줄임 */
   background-color: #f4efe8;
- 
+
   overflow: visible;
   position: relative;
 }
 
 .mySwiper {
   width: 100%;
-  height: 450px; /* 전체 높이를 600px -> 400px로 축소 */
+  height: 450px;
+
 }
 
 .swiper-wrapper {
@@ -335,20 +442,23 @@ header .gnb > li:hover > a::after {
 }
 
 .swiper-slide {
- width: 400px !important;
+  width: 400px !important;
   height: auto !important;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.6s ease;
-  opacity: 0.6; /* 주변 이미지는 더 흐리게 해서 시선을 분산시키지 않음 */
-  transform: scale(0.8); /* 기본 스케일을 더 작게 */
+  opacity: 0.6;
+  /* 주변 이미지는 더 흐리게 해서 시선을 분산시키지 않음 */
+  transform: scale(0.8);
+  /* 기본 스케일을 더 작게 */
 }
 
 /* 가운데 강조 효과 */
 .swiper-slide-active {
   opacity: 1 !important;
-  transform: scale(1.2) !important; /* 가운데만 살짝 커지게 */
+  transform: scale(1.2) !important;
+  /* 가운데만 살짝 커지게 */
   z-index: 10;
 }
 
@@ -360,8 +470,11 @@ header .gnb > li:hover > a::after {
   max-height: 350px;
   object-fit: cover;
   border-radius: 3px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* 그림자도 가볍게 수정 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  /* 그림자도 가볍게 수정 */
 }
+
+
 
 /* footer */
 footer {
@@ -446,7 +559,202 @@ footer .inner .lower ul li i {
   color: #2e2a26;
   font-size: 25px;
 }
+
 footer .inner .lower ul li img {
   width: 40px;
   margin-top: 5px;
+}
+
+
+@media (max-width: 1024px) {
+  header {
+    height: auto !important;
+    /* 고정 높이 해제 */
+    min-height: auto !important;
+    padding-bottom: 0px;
+  }
+
+  /* 1. 헤더 UI를 가로 한 줄 배치가 가능하도록 설정 */
+  .header-ui-wrap {
+    position: relative;
+
+    /* absolute 해제 */
+    flex-direction: row !important;
+    /* 세로가 아닌 가로 배치 */
+    justify-content: space-between;
+    /* 양 끝으로 벌림 */
+    align-items: center;
+    /* 세로 중앙 정렬 */
+    padding-top: 0 !important;
+    padding: 20px 30px !important;
+    /* 여백 조정 */
+    margin-top: 0;
+    pointer-events: auto !important;
+    /* 터치 가능하게 */
+  }
+
+  /* 2. PC용 텍스트 메뉴 완전히 숨기기 */
+  header .nav,
+  header .menu-area {
+    display: none !important;
+  }
+
+  /* 3. 로고 설정 (왼쪽 배치) */
+  header .logo {
+    margin: 0 !important;
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+
+  header .logo h1 {
+    display: none;
+
+  }
+
+  .logo-box {
+    width: 110px;
+    /* 로고 이미지 크기 축소 */
+    height: 55px;
+  }
+
+  /* 4. 햄버거 버튼(바 아이콘) 설정 (오른쪽 배치) */
+  .m-open-btn {
+    display: block !important;
+    /* 모바일 전용 버튼 깨우기 */
+    position: relative;
+    /* absolute 해제 및 flex 흐름 탑승 */
+    top: auto;
+    right: auto;
+    font-size: 26px;
+    color: #3a342e;
+    /* 배경 슬라이더 위에서 보일 색상 */
+    z-index: 110;
+    cursor: pointer;
+  }
+
+  /* 호버 시 색상 변경  */
+  .header-ui-wrap:hover .m-open-btn {
+    color: #3a342e;
+  }
+
+  #introduce {
+    padding: 0;
+    margin-top: 40px;
+    /* 위 패딩을 120px → 40px로 줄임 */
+  }
+
+  #introduce .brandstory {
+    margin: 40px auto 30px auto;
+
+  }
+}
+
+
+/* 5. 미디어 쿼리 제어 (768px 이하에서만 노출) */
+@media (max-width: 768px) {
+  .inner {
+    width: 100% !important;
+    padding: 0 !important;
+    overflow: hidde;
+  }
+
+  header {
+    height: auto !important;
+    padding-bottom: 0 !important;
+  }
+
+
+  header .nav,
+  header .menu-area {
+    display: none !important;
+  }
+
+  header .logo-box {
+    width: 50px;
+    margin-top: -15px;
+  }
+
+
+  .m-open-btn {
+    display: block !important;
+    position: absolute;
+    top: 35px;
+    right: 25px;
+    font-size: 28px;
+    color: #7a6a5e;
+    z-index: 999;
+    pointer-events: auto;
+  }
+
+  .m-menu-slide {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: #f4efe8;
+    z-index: 1000;
+    padding: 80px 30px;
+    transition: right 0.4s ease;
+  }
+
+  .m-menu-slide.active {
+    right: 0;
+  }
+
+
+
+  #introduce {
+    padding: 20px 0 20px 0;
+    /* 더 작은 화면엔 더 줄임 */
+  }
+
+  #introduce .brandstory {
+    margin: 40px auto 30px auto;
+  }
+
+  #introduce .brandstory h1 {
+    font-size: 35px;
+  }
+
+  #introduce .brandstory h2 {
+    font-size: 20px;
+  }
+
+  #introduce .brandstory p {
+    text-align: left;
+    font-size: 16px;
+    padding: 50px 50px 0 50px;
+  }
+
+  #story-slider {
+    padding: 20px;
+  }
+
+  .mySwiper {
+    width: 100%;
+    height: 250px;
+
+  }
+
+  .swiper-slide {
+    width: 60% !important;
+  }
+
+  footer {
+    padding: 20px;
+  }
+
+  footer .inner .upper ul {
+    display: none;
+  }
+
+  footer .inner .upper .logo {
+    margin-top: 10px;
+  }
+
+  footer .inner .lower p {
+    display: none;
+  }
 }

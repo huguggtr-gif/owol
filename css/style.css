@@ -339,7 +339,7 @@ header .txt p {
   opacity: 0.7;
 }
 
-/* --- 모바일용 NAV (이하 기능 유지용 추가) --- */
+/* --- 모바일용 NAV  --- */
 
 /* 1. 모바일 열기 버튼 (PC에선 숨김) */
 .m-open-btn {
@@ -877,7 +877,6 @@ header .txt p {
 
 }
 
-
 .room_img li>img {
   width: 100%;
   height: 100%;
@@ -938,9 +937,7 @@ header .txt p {
 
 .room_img li a img {
   width: 100px;
-  /* 원하는 가로 크기 (기본값보다 작게 설정) */
   height: auto;
-  /* 비율에 맞춰 세로 자동 조절 */
 }
 
 .room_img li:hover a {
@@ -1101,14 +1098,13 @@ footer .inner .lower ul li img {
     cursor: pointer;
   }
 
-  /* 호버 시 색상 변경 (사용자님 CSS 톤 유지) */
+  /* 호버 시 색상 변경  */
   .header-ui-wrap:hover .m-open-btn {
     color: #3a342e;
   }
 
   .txt-wrap {
     left: 50%;
-    /* 화면 중앙 근처로 이동 (기존 60%) */
     transform: translateX(-50%);
     bottom: 80px;
     text-align: center;
@@ -1188,7 +1184,7 @@ footer .inner .lower ul li img {
     margin-top: 0;
     display: inline-block; /* 밑줄이 글자 길이에 맞게 */
   }
-}
+
 
   #content {
     padding: 60px 0;
@@ -1308,7 +1304,6 @@ footer .inner .lower ul li img {
   .inner {
     width: 100% !important;
     padding: 0 !important;
-    /* 패딩이 있으면 카드가 밀립니다 */
     overflow: hidde;
   }
 
@@ -1374,7 +1369,7 @@ footer .inner .lower ul li img {
   }
 
   #introduce {
-    padnding-top: 100px;
+    padding-top: 100px;
     padding-bottom: 10px;
   }
 

@@ -1,0 +1,587 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+
+@font-face {
+    font-family: 'JEJU';
+    src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+body {
+    background-color: #f4efe8;
+    font-family: 'Noto Sans', 'JEJU', serif;
+}
+
+.inner {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+/* --- Header --- */
+header {
+    width: 100%;
+    height: 320px;
+    position: relative;
+}
+
+.header-ui-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    transition: background 0.4s ease;
+}
+
+.header-ui-wrap:hover {
+    background: rgba(244, 239, 232, 0.98);
+    opacity: 90%;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.header-ui-wrap:hover .nav li a,
+.header-ui-wrap:hover .gnb>li>a {
+    color: #7a6a5e;
+}
+
+.header-ui-wrap:hover .logo h1 {
+    color: #9c7a4a;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-box {
+    position: relative;
+    width: 120px;
+    height: 60px;
+    margin-top: -5px;
+}
+
+.logo-default,
+.logo-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s;
+}
+
+.logo-hover {
+    opacity: 0;
+}
+
+.header-ui-wrap:hover .logo-default {
+    opacity: 0;
+}
+
+.header-ui-wrap:hover .logo-hover {
+    opacity: 1;
+}
+
+header .nav {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    display: flex;
+    gap: 30px;
+    color: #7a6a5e;
+    font-size: 18px;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    margin: 40px 0 60px 0;
+    gap: 0px;
+    color: #9c7a4a;
+}
+
+header .logo h1 {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.1;
+    text-align: center;
+}
+
+header .menu-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: 1.5px solid #c9c3b8;
+    border-bottom: 1.5px solid #c9c3b8;
+}
+
+header .gnb {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+header .gnb>li {
+    width: 140px;
+    text-align: left;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+header .gnb>li>a {
+    color: #2e2a26;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+header .gnb>li>a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #9c7a4a;
+    transition: width 0.3s;
+    margin-top: 6px;
+}
+
+/* 서브메뉴*/
+.full-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        opacity 0.6s ease;
+
+    background: rgba(244, 239, 232, 0.98);
+    border-top: 1px solid rgba(58, 52, 46, 0.1);
+    z-index: 100;
+}
+
+.header-ui-wrap:hover .full-dropdown {
+    max-height: 800px;
+    opacity: 1;
+}
+
+.dropdown-inner {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    padding: 40px 0 80px 0;
+    margin: 0 auto;
+}
+
+.sub-col {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sub-col a {
+    color: #7a6a5e;
+    font-family: 'Noto Sans';
+    font-size: 14px;
+}
+
+.sub-col a:hover {
+    color: #d4580a !important;
+    font-weight: bold;
+}
+
+
+/* --- 모바일용 NAV  --- */
+
+/* 1. 모바일 열기 버튼 (PC에선 숨김) */
+.m-open-btn {
+    display: none;
+    position: absolute;
+    top: 40px;
+    /* 로고 높이에 맞춰 조정 */
+    right: 20px;
+    font-size: 28px;
+    color: #7a6a5e;
+    /* 배경이 어두울 때 대비 */
+    z-index: 105;
+    cursor: pointer;
+}
+
+/* 2. 모바일 슬라이드 메뉴 본체 */
+.m-menu-slide {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* 처음에는 화면 오른쪽에 숨김 */
+    width: 80%;
+    /* 모바일 화면의 80% 차지 */
+    height: 100vh;
+    background-color: #f4efe8;
+    z-index: 1000;
+    padding: 80px 20px 50px;
+    /* 닫기 버튼 공간 확보 */
+    transition: right 0.4s ease;
+    pointer-events: auto;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.m-menu-slide.active {
+    right: 0;
+    /* 열림 상태 */
+}
+
+/* 3. 모바일 내부 리스트 및 아코디언 */
+.m-gnb-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.m-link-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    cursor: pointer;
+}
+
+.m-link-wrap a {
+    font-size: 18px;
+    font-family: 'Noto Sans';
+    font-weight: bold;
+    color: #7a6a5e;
+}
+
+.m-link-wrap .arrow {
+    font-size: 14px;
+    color: #7a6a5e;
+    transition: transform 0.3s ease;
+}
+
+/* 4. 모바일 서브메뉴 제어 */
+.sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.sub-menu li a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 15px;
+    color: #7a6a5e;
+}
+
+/* 닫기 버튼 */
+.m-close-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 30px;
+    color: #7a6a5e;
+    z-index: 1010;
+    cursor: pointer;
+    display: flex !important;
+}
+
+/* 아코디언 활성화 상태 */
+.m-gnb-item.active .sub-menu {
+    max-height: 400px;
+    /* 서브메뉴 길이에 따라 조절 */
+    padding-bottom: 10px;
+}
+
+.m-gnb-item.active .arrow {
+    transform: rotate(180deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
+footer {
+    width: 100%;
+    height: 400px;
+    background-color: #fff;
+    padding: 50px 80px;
+}
+
+footer .inner .upper {
+    width: 100%;
+    height: 180px;
+    border-bottom: 1px solid #2e2a26;
+    padding-bottom: 20px;
+    position: relative;
+    align-items: center;
+}
+
+footer .inner .upper .logo {
+    color: #2e2a26;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    gap: 10px;
+}
+
+footer .inner .upper .logo img {
+    width: 71px;
+    height: auto;
+    opacity: 0.7;
+}
+
+footer .inner .upper .logo h1 {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 20px;
+    font-weight: 200;
+    opacity: 0.6;
+    margin-top: 10px;
+    text-align: center;
+}
+
+footer .inner .upper ul {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    right: 80px;
+    top: -20px;
+}
+
+footer .inner .upper ul li a {
+    color: #2e2a26;
+    font-size: 16px;
+    font-family: 'Noto Sans';
+    opacity: 0.6;
+}
+
+footer .inner .lower {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .inner .lower p {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 14px;
+    color: #2e2a26;
+    opacity: 0.5;
+    margin-bottom: 20px;
+}
+
+footer .inner .lower ul {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    right: 20px;
+}
+
+footer .inner .lower ul li i {
+    color: #2e2a26;
+    font-size: 25px;
+}
+
+footer .inner .lower ul li img {
+    width: 40px;
+    margin-top: 5px;
+}
+
+
+@media (max-width: 1024px) {
+    header {
+        height: auto;
+        /* 고정 높이 해제 */
+        min-height: 500px;
+        padding-bottom: 50px;
+    }
+
+    /* 1. 헤더 UI를 가로 한 줄 배치가 가능하도록 설정 */
+    .header-ui-wrap {
+        position: relative;
+        /* absolute 해제 */
+        flex-direction: row !important;
+        /* 세로가 아닌 가로 배치 */
+        justify-content: space-between;
+        /* 양 끝으로 벌림 */
+        align-items: center;
+        /* 세로 중앙 정렬 */
+        padding: 20px 30px !important;
+        /* 여백 조정 */
+        margin-top: 0;
+        pointer-events: auto !important;
+        /* 터치 가능하게 */
+    }
+
+    /* 2. PC용 텍스트 메뉴 완전히 숨기기 */
+    header .nav,
+    header .menu-area {
+        display: none !important;
+    }
+
+    /* 3. 로고 설정 (왼쪽 배치) */
+    header .logo {
+        margin: 0 !important;
+        /* 가로 배치 시 마진 제거 */
+        justify-content: flex-start;
+        padding-top: 20px;
+    }
+
+    header .logo h1 {
+        display: none;
+    }
+
+    .logo-box {
+        width: 110px;
+        /* 로고 이미지 크기 축소 */
+        height: 55px;
+    }
+
+    /* 4. 햄버거 버튼(바 아이콘) 설정 (오른쪽 배치) */
+    .m-open-btn {
+        display: block !important;
+        /* 모바일 전용 버튼 깨우기 */
+        position: relative;
+        /* absolute 해제 및 flex 흐름 탑승 */
+        top: auto;
+        right: auto;
+        font-size: 26px;
+        color: #3a342e;
+        /* 배경 슬라이더 위에서 보일 색상 */
+        z-index: 110;
+        cursor: pointer;
+    }
+
+    /* 호버 시 색상 변경  */
+    .header-ui-wrap:hover .m-open-btn {
+        color: #3a342e;
+    }
+}
+
+/* 5. 미디어 쿼리 제어 (768px 이하에서만 노출) */
+@media (max-width: 768px) {
+    .inner {
+        width: 100% !important;
+        padding: 0 !important;
+        overflow: hidde;
+    }
+
+    header {
+        height: 500px;
+    }
+
+    header .nav,
+    header .menu-area {
+        display: none !important;
+    }
+
+
+    .m-open-btn {
+        display: block !important;
+        position: absolute;
+        top: 35px;
+        right: 25px;
+        font-size: 28px;
+        color: #7a6a5e;
+        z-index: 999;
+        pointer-events: auto;
+    }
+
+    .m-menu-slide {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: #f4efe8;
+        z-index: 1000;
+        padding: 80px 30px;
+        transition: right 0.4s ease;
+    }
+
+    .m-menu-slide.active {
+        right: 0;
+    }
+
+    header .logo h1 {
+        font-size: 24px;
+    }
+
+
+    footer {
+        padding: 20px;
+    }
+
+    footer .inner .upper ul {
+        display: none;
+    }
+
+    footer .inner .upper .logo {
+        margin-top: 10px;
+    }
+
+    footer .inner .lower p {
+        display: none;
+    }
+}
