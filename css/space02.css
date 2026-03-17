@@ -53,7 +53,7 @@ img {
   display: block;
 }
 
-/* --- Header --- */
+/* ===== HEADER ===== */
 header {
   width: 100%;
   height: 320px;
@@ -118,11 +118,9 @@ header {
 .logo-hover {
   opacity: 0;
 }
-
 .header-ui-wrap:hover .logo-default {
   opacity: 0;
 }
-
 .header-ui-wrap:hover .logo-hover {
   opacity: 1;
 }
@@ -141,7 +139,6 @@ header .logo {
   display: flex;
   align-items: center;
   margin: 40px 0 60px 0;
-  gap: 0px;
   color: #9c7a4a;
 }
 
@@ -190,7 +187,7 @@ header .gnb > li > a::after {
   margin-top: 6px;
 }
 
-/* 서브메뉴*/
+/* 서브메뉴 */
 .full-dropdown {
   position: absolute;
   top: 100%;
@@ -202,7 +199,6 @@ header .gnb > li > a::after {
   transition:
     max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1),
     opacity 0.6s ease;
-
   background: rgba(244, 239, 232, 0.98);
   border-top: 1px solid rgba(58, 52, 46, 0.1);
   z-index: 100;
@@ -239,35 +235,28 @@ header .gnb > li > a::after {
   font-weight: bold;
 }
 
-/* --- 모바일용 NAV  --- */
-
-/* 1. 모바일 열기 버튼 (PC에선 숨김) */
+/* 모바일 버튼 */
 .m-open-btn {
   display: none;
   position: absolute;
   top: 40px;
-  /* 로고 높이에 맞춰 조정 */
   right: 20px;
   font-size: 28px;
   color: #7a6a5e;
-  /* 배경이 어두울 때 대비 */
   z-index: 105;
   cursor: pointer;
 }
 
-/* 2. 모바일 슬라이드 메뉴 본체 */
+/* 모바일 슬라이드 메뉴 */
 .m-menu-slide {
   position: fixed;
   top: 0;
   right: -100%;
-  /* 처음에는 화면 오른쪽에 숨김 */
   width: 80%;
-  /* 모바일 화면의 80% 차지 */
   height: 100vh;
   background-color: #f4efe8;
   z-index: 1000;
   padding: 80px 20px 50px;
-  /* 닫기 버튼 공간 확보 */
   transition: right 0.4s ease;
   pointer-events: auto;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
@@ -275,10 +264,8 @@ header .gnb > li > a::after {
 
 .m-menu-slide.active {
   right: 0;
-  /* 열림 상태 */
 }
 
-/* 3. 모바일 내부 리스트 및 아코디언 */
 .m-gnb-item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -304,7 +291,6 @@ header .gnb > li > a::after {
   transition: transform 0.3s ease;
 }
 
-/* 4. 모바일 서브메뉴 제어 */
 .sub-menu {
   max-height: 0;
   overflow: hidden;
@@ -319,7 +305,6 @@ header .gnb > li > a::after {
   color: #7a6a5e;
 }
 
-/* 닫기 버튼 */
 .m-close-btn {
   position: absolute;
   top: 25px;
@@ -331,10 +316,8 @@ header .gnb > li > a::after {
   display: flex !important;
 }
 
-/* 아코디언 활성화 상태 */
 .m-gnb-item.active .sub-menu {
   max-height: 400px;
-  /* 서브메뉴 길이에 따라 조절 */
   padding-bottom: 10px;
 }
 
@@ -342,191 +325,140 @@ header .gnb > li > a::after {
   transform: rotate(180deg);
 }
 
-/* --- ROOM DETAIL --- */
-.room-detail {
-  padding: 100px 0;
-}
-
-/* 타이틀 */
-.room-header {
-  text-align: center;
-  margin-bottom: 67px;
-}
-
-.room-header h2 {
-  font-family: 'Libre Caslon Text', serif;
-  font-size: 40px;
-  font-weight: 400;
-  margin-bottom: 20px;
-}
-
-.room-header .sub {
-  font-family: 'Libre Caslon Text', serif;
-  font-size: 16px;
-  color: #7a6a5e;
-  margin-bottom: 50px;
-}
-
-.room-header .desc {
-  font-size: 15px;
-  font-family: 'Nano sans';
-  color: #5a524a;
-  line-height: 1.6;
-}
-
-/* 메인 이미지 */
-.room-visual img {
+/* ===== SPACE MAP ===== */
+#space-map {
   width: 100%;
-  border-radius: 4px;
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #f4efe8;
+}
+
+.map-title {
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #3a342e;
   margin-bottom: 60px;
+  letter-spacing: 0.02em;
 }
 
-/* --- ROOM INFO SECTION --- */
+.map-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+}
 
-.room-info-container {
+.map-wrap svg {
+  width: 100%;
+  height: auto;
+}
+
+.zone-hit {
+  fill: transparent;
+  cursor: pointer;
+  transition: fill 0.2s ease;
+}
+
+.zone-hit:hover {
+  fill: #9fb4c7;
+  opacity: 0.4;
+}
+
+.zone-hit.zone-active {
+  fill: #9fb4c7;
+  opacity: 0.8;
+  transition: fill 0.3s ease;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #3a342e;
+  color: #f4efe8;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
+  transform: translate(-50%, -140%);
+  z-index: 10;
+}
+
+.tooltip.show {
+  opacity: 1;
+}
+
+/* ===== SPACE INFO ===== */
+.space-info {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  gap: 50px;
-  margin-top: 80px;
-  margin-bottom: 120px;
-  align-items: stretch; /* 이미지 높이에 텍스트 영역 높이를 맞춤 */
+  min-height: 480px;
 }
 
-/* 왼쪽 이미지 영역  */
-.room-sub-images {
+.space-info-text {
+  width: 50%;
+  background-color: #9fb4c7;
   display: flex;
-  gap: 20px;
-  flex: 2; /* 텍스트 영역보다 더 넓게 배정 */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 60px;
 }
 
-.sub-img-box {
-  flex: 1;
+.space-info-sub {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  color: #fff;
+  opacity: 0.8;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
 }
 
-.sub-img-box img {
+.space-info-title {
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.space-info-desc {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  line-height: 2;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.space-info-img {
+  width: 50%;
+}
+
+.space-info-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* 오른쪽 텍스트 영역  */
-.room-description-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 5px 0;
-}
-
-/* 텍스트 상단: 제목 부분 */
-.desc-header .desc-title {
-  font-family: 'Noto Sans';
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 2;
-  border-bottom: 1.5px solid #3a342e; /* 제목 밑줄 */
-  display: inline-block;
-  margin-bottom: 10px;
-  color: #3a342e;
-}
-
-.desc-header .desc-category {
-  font-family: 'Noto Sans';
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: #7a6a5e;
-}
-
-/* 텍스트 중간: 상세 안내 문구 */
-.desc-details {
-  font-family: 'Noto Sans';
-  line-height: 2;
-  font-size: 14px;
-  color: #5a524a;
-  margin: 30px 0;
-}
-
-/* 텍스트 하단: 예약 버튼 */
-.desc-footer {
-  font-family: 'Noto Sans';
-  border-bottom: 1px solid #3a342e; /* 버튼 밑줄 */
-  align-self: flex-start; /* 밑줄이 글자 길이만큼만 생기도록 설정 */
-  padding-bottom: 3px;
-}
-
-.btn-reservation-link {
-  font-family: 'Noto Sans';
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #3a342e;
-}
-
-/* --- ROOM FEATURES SECTION --- */
-.room-features {
-  padding: 100px 0;
-  background-color: #f4efe8;
-  border-top: 1px solid #c9c3b8;
-}
-
-/* 컨테이너 안에서 요소들이 삐져나가지 않게 flex 조정 */
-.features-container {
-  display: flex;
-  justify-content: space-between; /* 양 끝에 맞춰서 균등 배분 */
-  align-items: flex-start;
-  gap: 20px; /* 항목 간 최소 간격 */
-}
-
-/* 각 카테고리 박스 (제목 + 내용 가로 배치) */
-.f-box {
-  display: flex;
-  gap: 30px; /* 제목과 리스트 사이 간격 */
-}
-
-/* 제목 스타일 */
-.f-title {
-  font-family: 'Noto Sans';
-  font-size: 14px;
-  font-weight: 700;
-  color: #3a342e;
-  white-space: nowrap; /* 제목 줄바꿈 방지 */
-  width: 100px; /* 제목 영역 너비 고정 */
-}
-
-/* 리스트 스타일 */
-.f-list-wrap {
-  display: flex;
-  gap: 30px;
-} /* AMENITIES처럼 리스트가 2개인 경우 */
-
-.f-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.f-list li {
-  font-family: 'Noto Sans';
-  font-size: 13px;
-  color: #5a524a;
-  white-space: nowrap; /* 내용이 너무 길어 옆으로 삐져나가는 걸 방지하려면 이걸 빼도 됩니다 */
-  position: relative;
-  padding-left: 12px;
-}
-
-.f-list li::before {
-  content: '·';
-  position: absolute;
-  left: 0;
-  font-weight: bold;
-}
-
-/* footer */
+/* ===== FOOTER ===== */
 footer {
   width: 100%;
   height: 400px;
   background-color: #fff;
-  padding: 50px 80px;
+  padding: 100px 0;
+  height: auto;
+}
+footer .inner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 80px; /* ← inner에서 좌우 여백 조절 */
 }
 
 footer .inner .upper {
@@ -566,7 +498,7 @@ footer .inner .upper ul {
   display: flex;
   gap: 20px;
   position: absolute;
-  right: 80px;
+  right: 0px;
   top: -20px;
 }
 
@@ -597,7 +529,6 @@ footer .inner .lower ul {
   display: flex;
   gap: 20px;
   align-items: center;
-  right: 20px;
 }
 
 footer .inner .lower ul li i {
@@ -610,43 +541,34 @@ footer .inner .lower ul li img {
   margin-top: 5px;
 }
 
+/* ===== 미디어쿼리 ===== */
 @media (max-width: 1024px) {
   header {
     height: auto;
-    padding-bottom: 0px;
-  }
-  .room-detail {
-    padding: 30px;
-  }
-  /* 1. 헤더 UI를 가로 한 줄 배치가 가능하도록 설정 */
-  .header-ui-wrap {
-    position: relative;
-    /* absolute 해제 */
-    flex-direction: row !important;
-    /* 세로가 아닌 가로 배치 */
-    justify-content: space-between;
-    /* 양 끝으로 벌림 */
-    align-items: center;
-    /* 세로 중앙 정렬 */
-    padding: 20px 30px !important;
-    /* 여백 조정 */
-    margin-top: 0;
-    pointer-events: auto !important;
-    /* 터치 가능하게 */
+    min-height: auto;
+    padding-bottom: 0;
   }
 
-  /* 2. PC용 텍스트 메뉴 완전히 숨기기 */
+  .header-ui-wrap {
+    position: relative;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px !important;
+    margin-top: 0;
+    pointer-events: auto !important;
+    padding-top: 0 !important;
+  }
+
   header .nav,
   header .menu-area {
     display: none !important;
   }
 
-  /* 3. 로고 설정 (왼쪽 배치) */
   header .logo {
     margin: 0 !important;
-    /* 가로 배치 시 마진 제거 */
     justify-content: flex-start;
-    padding-top: 20px;
+    padding-top: 0;
   }
 
   header .logo h1 {
@@ -655,41 +577,33 @@ footer .inner .lower ul li img {
 
   .logo-box {
     width: 110px;
-    /* 로고 이미지 크기 축소 */
     height: 55px;
   }
 
-  /* 4. 햄버거 버튼(바 아이콘) 설정 (오른쪽 배치) */
   .m-open-btn {
     display: block !important;
-    /* 모바일 전용 버튼 깨우기 */
     position: relative;
-    /* absolute 해제 및 flex 흐름 탑승 */
     top: auto;
     right: auto;
     font-size: 26px;
     color: #3a342e;
-    /* 배경 슬라이더 위에서 보일 색상 */
     z-index: 110;
     cursor: pointer;
   }
 
-  /* 호버 시 색상 변경  */
   .header-ui-wrap:hover .m-open-btn {
     color: #3a342e;
   }
 }
 
-/* 768px 이하에서만 노출) */
 @media (max-width: 768px) {
   .inner {
     width: 100% !important;
     padding: 0 !important;
-    overflow: hidde;
   }
 
   header {
-    height: auto;
+    height: auto !important;
   }
 
   header .nav,
@@ -725,32 +639,32 @@ footer .inner .lower ul li img {
     right: 0;
   }
 
-  header .logo h1 {
-    font-size: 24px;
-  }
-  .room-detail {
-    padding: 50px;
+  #space-map {
+    padding: 50px 16px;
   }
 
-  .room-info-container {
-    flex-direction: column; /* 세로 배치 */
-    padding: 0 20px;
+  .map-title {
+    font-size: 18px;
+    margin-bottom: 40px;
   }
 
-  .room-sub-images {
-    flex-direction: column; /* 이미지도 세로로 */
+  .map-wrap {
+    max-width: 100%;
   }
 
-  .room-description-text {
-    margin-top: 40px;
-    gap: 30px; /* 모바일에서는 위아래 밀착보다 적당한 간격 유지 */
+  .space-info {
+    flex-direction: column;
+    min-height: auto;
   }
 
-  .features-container {
-    grid-template-columns: 1fr; /* 모바일은 한 줄로 */
+  .space-info-text {
+    width: 100%;
+    padding: 60px 30px;
   }
-  .f-box {
-    gap: 20px;
+
+  .space-info-img {
+    width: 100%;
+    height: 300px;
   }
 
   footer {

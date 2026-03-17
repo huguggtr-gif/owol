@@ -5,7 +5,8 @@
 
 @font-face {
   font-family: 'JEJU';
-  src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2') format('woff2');
+  src: url('https://fonts.gstatic.com/ea/jejumyeongjo/v3/JejuMyeongjo-Regular.woff2')
+    format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -53,8 +54,6 @@ img {
   display: block;
 }
 
-
-
 /* --- Header --- */
 header {
   width: 100%;
@@ -84,7 +83,7 @@ header {
 }
 
 .header-ui-wrap:hover .nav li a,
-.header-ui-wrap:hover .gnb>li>a {
+.header-ui-wrap:hover .gnb > li > a {
   color: #7a6a5e;
 }
 
@@ -168,13 +167,13 @@ header .gnb {
   gap: 80px;
 }
 
-header .gnb>li {
+header .gnb > li {
   width: 140px;
   text-align: left;
   padding-bottom: 30px;
 }
 
-header .gnb>li>a {
+header .gnb > li > a {
   color: #f4efe8;
   font-weight: bold;
   font-size: 18px;
@@ -229,8 +228,6 @@ header .gnb>li>a {
   font-weight: bold;
 }
 
-
-
 /* 메인이미지 슬라이더 */
 .slider {
   position: absolute;
@@ -245,7 +242,9 @@ header .gnb>li>a {
   inset: 0;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1s ease-in-out, visibility 1s;
+  transition:
+    opacity 1s ease-in-out,
+    visibility 1s;
   z-index: 1;
 }
 
@@ -263,9 +262,7 @@ header .gnb>li>a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-
 }
-
 
 header .slider button {
   position: absolute;
@@ -446,10 +443,8 @@ header .txt p {
 @media (max-width: 768px) {
   .m-open-btn {
     display: block;
-
   }
 }
-
 
 /* --- Notice-bar  --- */
 #introduce {
@@ -582,7 +577,6 @@ header .txt p {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 50px;
-
 }
 
 .view-box {
@@ -612,7 +606,6 @@ header .txt p {
   display: flex;
   gap: 25px;
   transition: transform 0.5s ease-in-out;
-
 }
 
 #content .inner .slide-btn {
@@ -874,10 +867,9 @@ header .txt p {
 .room_img {
   display: flex;
   width: 100%;
-
 }
 
-.room_img li>img {
+.room_img li > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -891,7 +883,7 @@ header .txt p {
   transition: transform 0.6s ease;
 }
 
-.room_img li:hover>img {
+.room_img li:hover > img {
   transform: scale(1.2);
 }
 
@@ -907,7 +899,7 @@ header .txt p {
   opacity: 0;
 }
 
-.room_img li>img {
+.room_img li > img {
   width: 100%;
   height: auto;
   display: block;
@@ -1033,7 +1025,6 @@ footer .inner .lower ul li img {
   margin-top: 5px;
 }
 
-
 @media (max-width: 1024px) {
   header {
     height: auto;
@@ -1127,7 +1118,6 @@ footer .inner .lower ul li img {
     margin: 0 auto;
   }
 
-
   /* 5. 기타 태블릿용 섹션 조정 */
 
   .prev {
@@ -1142,15 +1132,13 @@ footer .inner .lower ul li img {
     padding-left: 50px;
     /* 여백 축소 */
     justify-content: left;
-
-
   }
 
   #introduce .notice-bar a {
     font-size: 16px;
   }
 
-#introduce .inner {
+  #introduce .inner {
     width: 100% !important;
     max-width: 1200px !important; /* 전체적인 틀 유지 */
     margin: 0 auto !important;
@@ -1160,7 +1148,7 @@ footer .inner .lower ul li img {
     align-items: center; /* 자식 요소들을 가로축 중앙으로 */
   }
 
-#introduce .img {
+  #introduce .img {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1169,22 +1157,21 @@ footer .inner .lower ul li img {
     width: 130%;
     margin: 0 auto;
   }
-#introduce .img-box {
-    flex: 0 0 45%; 
+  #introduce .img-box {
+    flex: 0 0 45%;
     max-width: 480px; /* 너무 작아지지 않게 조정 */
   }
 
-#introduce .img .txt {
+  #introduce .img .txt {
     flex: 0 0 45%; /* 이미지와 비슷한 비중으로 공간 확보 */
     text-align: left;
     margin: 0;
   }
 
-#introduce .img h2 {
+  #introduce .img h2 {
     margin-top: 0;
     display: inline-block; /* 밑줄이 글자 길이에 맞게 */
   }
-
 
   #content {
     padding: 60px 0;
@@ -1192,7 +1179,6 @@ footer .inner .lower ul li img {
   }
 
   #content .inner h1 {
-
     color: #f4efe8;
     margin-top: 30px;
     margin-bottom: 75px;
@@ -1276,12 +1262,10 @@ footer .inner .lower ul li img {
 
   #winter_travel .inner .txt .button button {
     margin-top: 30px;
-
   }
 
   #winter_travel .inner .img .title-wrap h1 {
     font-size: 50px;
-
   }
 
   #winter_travel .inner .img .title-wrap h2 {
@@ -1290,7 +1274,6 @@ footer .inner .lower ul li img {
 
   #winter_travel .inner .img .info-text {
     top: 25%;
-
   }
 
   .room_img li p {
@@ -1298,7 +1281,6 @@ footer .inner .lower ul li img {
     left: 20px;
   }
 }
-
 
 @media (max-width: 768px) {
   .inner {
@@ -1374,10 +1356,8 @@ footer .inner .lower ul li img {
   }
 
   #introduce .notice-bar {
-
     justify-content: left;
     padding-right: 30px;
-
   }
 
   #introduce .notice-bar a {
@@ -1393,7 +1373,6 @@ footer .inner .lower ul li img {
     margin-bottom: 30px;
     font-size: 15px;
   }
-
 
   .view-box {
     width: 100%;
@@ -1431,12 +1410,10 @@ footer .inner .lower ul li img {
 
   #content .card {
     width: 100%;
-
   }
 
   #content .card p {
     display: none;
-
   }
 
   #content .card .offer img {
@@ -1587,6 +1564,4 @@ footer .inner .lower ul li img {
   footer .inner .lower p {
     display: none;
   }
-
-
 }
