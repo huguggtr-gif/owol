@@ -564,7 +564,9 @@ footer .inner .lower ul li img {
   header .menu-area {
     display: none !important;
   }
-
+  header .logo-box {
+    margin-top: 40px;
+  }
   header .logo {
     margin: 0 !important;
     justify-content: flex-start;

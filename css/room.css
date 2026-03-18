@@ -53,7 +53,7 @@ img {
   display: block;
 }
 
-/* --- Header --- */
+/* ===== HEADER ===== */
 header {
   width: 100%;
   height: 320px;
@@ -118,11 +118,9 @@ header {
 .logo-hover {
   opacity: 0;
 }
-
 .header-ui-wrap:hover .logo-default {
   opacity: 0;
 }
-
 .header-ui-wrap:hover .logo-hover {
   opacity: 1;
 }
@@ -141,7 +139,6 @@ header .logo {
   display: flex;
   align-items: center;
   margin: 40px 0 60px 0;
-  gap: 0px;
   color: #9c7a4a;
 }
 
@@ -190,7 +187,7 @@ header .gnb > li > a::after {
   margin-top: 6px;
 }
 
-/* 서브메뉴*/
+/* 서브메뉴 */
 .full-dropdown {
   position: absolute;
   top: 100%;
@@ -202,7 +199,6 @@ header .gnb > li > a::after {
   transition:
     max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1),
     opacity 0.6s ease;
-
   background: rgba(244, 239, 232, 0.98);
   border-top: 1px solid rgba(58, 52, 46, 0.1);
   z-index: 100;
@@ -239,35 +235,28 @@ header .gnb > li > a::after {
   font-weight: bold;
 }
 
-/* --- 모바일용 NAV  --- */
-
-/* 1. 모바일 열기 버튼 (PC에선 숨김) */
+/* 모바일 버튼 */
 .m-open-btn {
   display: none;
   position: absolute;
   top: 40px;
-  /* 로고 높이에 맞춰 조정 */
   right: 20px;
   font-size: 28px;
   color: #7a6a5e;
-  /* 배경이 어두울 때 대비 */
   z-index: 105;
   cursor: pointer;
 }
 
-/* 2. 모바일 슬라이드 메뉴 본체 */
+/* 모바일 슬라이드 메뉴 */
 .m-menu-slide {
   position: fixed;
   top: 0;
   right: -100%;
-  /* 처음에는 화면 오른쪽에 숨김 */
   width: 80%;
-  /* 모바일 화면의 80% 차지 */
   height: 100vh;
   background-color: #f4efe8;
   z-index: 1000;
   padding: 80px 20px 50px;
-  /* 닫기 버튼 공간 확보 */
   transition: right 0.4s ease;
   pointer-events: auto;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
@@ -275,10 +264,8 @@ header .gnb > li > a::after {
 
 .m-menu-slide.active {
   right: 0;
-  /* 열림 상태 */
 }
 
-/* 3. 모바일 내부 리스트 및 아코디언 */
 .m-gnb-item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -304,7 +291,6 @@ header .gnb > li > a::after {
   transition: transform 0.3s ease;
 }
 
-/* 4. 모바일 서브메뉴 제어 */
 .sub-menu {
   max-height: 0;
   overflow: hidden;
@@ -319,7 +305,6 @@ header .gnb > li > a::after {
   color: #7a6a5e;
 }
 
-/* 닫기 버튼 */
 .m-close-btn {
   position: absolute;
   top: 25px;
@@ -331,10 +316,8 @@ header .gnb > li > a::after {
   display: flex !important;
 }
 
-/* 아코디언 활성화 상태 */
 .m-gnb-item.active .sub-menu {
   max-height: 400px;
-  /* 서브메뉴 길이에 따라 조절 */
   padding-bottom: 10px;
 }
 
@@ -465,8 +448,7 @@ header .gnb > li > a::after {
 /* --- ROOM FEATURES SECTION --- */
 .room-features {
   padding: 100px 0;
-  background-color: #f4efe8;
-  border-top: 1px solid #c9c3b8;
+  background-color: #fff;
 }
 
 /* 컨테이너 안에서 요소들이 삐져나가지 않게 flex 조정 */
@@ -613,40 +595,35 @@ footer .inner .lower ul li img {
 @media (max-width: 1024px) {
   header {
     height: auto;
-    padding-bottom: 0px;
+    min-height: auto;
+    padding-bottom: 0;
   }
   .room-detail {
     padding: 30px;
   }
-  /* 1. 헤더 UI를 가로 한 줄 배치가 가능하도록 설정 */
   .header-ui-wrap {
     position: relative;
-    /* absolute 해제 */
     flex-direction: row !important;
-    /* 세로가 아닌 가로 배치 */
     justify-content: space-between;
-    /* 양 끝으로 벌림 */
     align-items: center;
-    /* 세로 중앙 정렬 */
     padding: 20px 30px !important;
-    /* 여백 조정 */
     margin-top: 0;
     pointer-events: auto !important;
-    /* 터치 가능하게 */
+    padding-top: 0 !important;
   }
 
-  /* 2. PC용 텍스트 메뉴 완전히 숨기기 */
   header .nav,
   header .menu-area {
     display: none !important;
   }
+  header .logo-box {
+    margin-top: 40px;
+  }
 
-  /* 3. 로고 설정 (왼쪽 배치) */
   header .logo {
     margin: 0 !important;
-    /* 가로 배치 시 마진 제거 */
     justify-content: flex-start;
-    padding-top: 20px;
+    padding-top: 0;
   }
 
   header .logo h1 {
@@ -655,26 +632,20 @@ footer .inner .lower ul li img {
 
   .logo-box {
     width: 110px;
-    /* 로고 이미지 크기 축소 */
     height: 55px;
   }
 
-  /* 4. 햄버거 버튼(바 아이콘) 설정 (오른쪽 배치) */
   .m-open-btn {
     display: block !important;
-    /* 모바일 전용 버튼 깨우기 */
     position: relative;
-    /* absolute 해제 및 flex 흐름 탑승 */
     top: auto;
     right: auto;
     font-size: 26px;
     color: #3a342e;
-    /* 배경 슬라이더 위에서 보일 색상 */
     z-index: 110;
     cursor: pointer;
   }
 
-  /* 호버 시 색상 변경  */
   .header-ui-wrap:hover .m-open-btn {
     color: #3a342e;
   }
@@ -685,7 +656,7 @@ footer .inner .lower ul li img {
   .inner {
     width: 100% !important;
     padding: 0 !important;
-    overflow: hidde;
+    overflow: hidden;
   }
 
   header {
@@ -713,7 +684,7 @@ footer .inner .lower ul li img {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
+    width: 100%;
     height: 100vh;
     background-color: #f4efe8;
     z-index: 1000;
@@ -721,16 +692,14 @@ footer .inner .lower ul li img {
     transition: right 0.4s ease;
   }
 
+  header .logo h1 {
+    font-size: 24px;
+  }
   .m-menu-slide.active {
     right: 0;
   }
 
-  header .logo h1 {
-    font-size: 24px;
-  }
-  .room-detail {
-    padding: 50px;
-  }
+  /*-----room info---*/
 
   .room-info-container {
     flex-direction: column; /* 세로 배치 */
@@ -746,10 +715,15 @@ footer .inner .lower ul li img {
     gap: 30px; /* 모바일에서는 위아래 밀착보다 적당한 간격 유지 */
   }
 
+  .room-features {
+    padding: 40px;
+  }
+
   .features-container {
-    grid-template-columns: 1fr; /* 모바일은 한 줄로 */
+    flex-direction: column;
   }
   .f-box {
+    flex-direction: column;
     gap: 20px;
   }
 
